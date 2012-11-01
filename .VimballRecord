@@ -1,0 +1,1 @@
+vimchant.vba: call delete('/Users/chrislott/.vim/autoload/vimchant.vim')|call delete('/Users/chrislott/.vim/doc/vimchant.txt')|call delete('/Users/chrislott/.vim/plugin/vimchant.vim')
