@@ -13,3 +13,6 @@
 [submodule "bundle/delimitmate"]
 	path = bundle/delimitmate
 	url = https://github.com/Raimondi/delimitMate.git
+[submodule "bundle/foldsearch"]
+	path = bundle/foldsearch
+	url = https://github.com/embear/vim-foldsearch.git
