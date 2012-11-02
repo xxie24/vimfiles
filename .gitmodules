@@ -66,7 +66,7 @@
 	url = git://github.com/Lokaltog/vim-easymotion.git
 [submodule "bundle/vim-latex"]
 	path = bundle/vim-latex
-	url = git://vim-latex.git.sourceforge.net/gitroot/vim-latex/vim-latex
+	url = https://github.com/jcf/vim-latex.git
 [submodule "bundle/vim-pandoc"]
 	path = bundle/vim-pandoc
 	url = https://github.com/vim-pandoc/vim-pandoc.git
