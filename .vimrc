@@ -9,7 +9,6 @@ set clipboard=unnamed
 
 " To disable a plugin, add it's bundle name to the following list
 let g:pathogen_disabled = []
-call add(g:pathogen_disabled, 'csapprox')
 "call add(g:pathogen_disables, 'supertab')
 
 "using pathogen to manage plugins... waaay easier than doing it manually
