@@ -10,6 +10,7 @@ set clipboard=unnamed
 " To disable a plugin, add it's bundle name to the following list
 let g:pathogen_disabled = []
 call add(g:pathogen_disabled, 'csapprox')
+"call add(g:pathogen_disables, 'supertab')
 
 "using pathogen to manage plugins... waaay easier than doing it manually
 "[http://www.vim.org/scripts/script.php?script_id=23321] these functions read
@@ -129,6 +130,9 @@ color candycode
 "allow cursor to move one character beyond end of line
 set virtualedit=onemore
 
+"keep cursor eight lines from top and bottom as it scrolls
+set scrolloff=8
+
 "show line numbers... this is useful even with prose. Seriously. Would I lie?
 set nu
 
@@ -163,7 +167,9 @@ set backspace=indent,eol,start
 "keep 10 lines above and below cursor when possiblde
 set scrolloff=10
 
-set foldopen=
+"open folds when I need them for searching, etc
+set foldopen = "block,hor,mark,percent,quickfix,search,tag,undo"
+set foldopen&
 
 " }}}
 
@@ -205,8 +211,9 @@ set mouse=
 "use a better key for leader commands (the ones that play 'Follow the Leader')
 let mapleader = ","
 
-"use jj to exit insert mode... since I can't get caps-lock mapped properly
-inoremap jj <ESC>
+"use jk to exit insert mode...no more reaching up for ESC key
+"thanks Steve Losh http://learnvimscriptthehardway.stevelosh.com/chapters/10.html
+inoremap jk <ESC>
 
 "make top and bottom commands go to actual beginning and end of file
 noremap gg gg^
@@ -233,6 +240,9 @@ noremap <leader>wc :echo WordCount()<CR>
 
 " turn the annoying search highlighting off when I'm done
 nnoremap <leader><space> :noh<cr>
+nnoremap <leader><space><space> :nohlsearch<cr>
+nnoremap <leader><space><space> :hlsearch
+
 
 " Bash like keys for the command line
 cnoremap <C-A>      <Home>
@@ -305,21 +315,13 @@ nnoremap <leader>ev :tabe $MYVIMRC<cr>
 "And source it, baby, source it!
 nnoremap <leader>sv :so $MYVIMRC<CR>
 
-" Search directory with PeepOpen: more wysiwygy searchy like
-" [http://peepcode.com/products/peepopen]
-nnoremap <leader>p :PeepOpen<CR>
-
-"Switch to some commonly used directories (useful for CtrlP and PeepOpen)
+"Switch to some commonly used directories (useful for CtrlP)
 noremap <leader>dc :cd <C-R>=expand('%:p:h') . '/'<CR><CR>
-noremap <leader>dlt :cd ~/Dropbox/PERSONAL/letters-and-email<CR>
-noremap <leader>d653 :cd ~/Dropbox/PERSONAL/ed653<CR>
-noremap <leader>d655 :cd ~/Dropbox/PERSONAL/ed655<CR>
-noremap <leader>dcpb :cd ~/Dropbox/MySites/ptp/cpb<CR>
-noremap <leader>dabc :cd ~/Dropbox/MySites/ptp/cpb/abcd-poems-2012<CR>
-noremap <leader>dptp :cd ~/Dropbox/MySites/ptp/<cr>
-noremap <leader>drum :cd ~/Dropbox/MySites/rum<CR>
-noremap <leader>dg :cd ~/Dropbox/MySites/geek<CR>
-noremap <leader>d12  :cd ~/Dropbox/MySites/ptp/12x12<CR>
+noremap <leader>dlt :cd ~/db/personal/mywriting/letters<CR>
+noremap <leader>dcpb :cd ~/db/personal/mysites/cpb<CR>
+noremap <leader>dptp :cd ~/db/personal/mysites/ptp/<cr>
+noremap <leader>drum :cd ~/db/personal/mysites/rum<CR>
+noremap <leader>dg :cd ~/db/personal/mysites/geek<CR>
 
 " :TOhtml configuration
 let use_xhtml = 1
@@ -509,6 +511,17 @@ endfunction
 
 " }}}
 
-"set foldopen = "block,hor,mark,percent,quickfix,search,tag,undo"
-set foldopen&
+"tell Vim where the dictionary is
+"set dictionary+=/usr/share/dict/words
 
+"also use dictionary for completion
+"set complete+=k
+
+"re-read files that have changed by forces outside of Vim
+set autoread
+
+source ~/.vim/vimrc/myfuncs.vim
+
+if has('gui_running')
+  source ~/.vim/vimrc/mygfuncs.vim
+endif

@@ -25,9 +25,6 @@
 [submodule "bundle/voom"]
 	path = bundle/voom
 	url = https://github.com/vim-voom/vim-voom.github.com.git
-[submodule "bundle/fuzzyfinder"]
-	path = bundle/fuzzyfinder
-	url = https://github.com/vim-scripts/FuzzyFinder.git
 [submodule "bundle/matchit"]
 	path = bundle/matchit
 	url = https://github.com/tsaleh/vim-matchit.git
