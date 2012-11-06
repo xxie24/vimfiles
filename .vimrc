@@ -1,23 +1,27 @@
 " ----- PRELIMINARIES ----- {{{
 
-" This isn't vim, sucka!
+" This isn't Vi, sucka! So no need to pretend.
 set nocompatible
 
 "share the system clipboard aka the system register aka * (you know: yank and
 "paste from and to other apps)
 set clipboard=unnamed
 
+"" Pathogen is a great way to manage plugins, but sometimes I need 
+"" temporarily disable a plugin, which I do below.
 " To disable a plugin, add it's bundle name to the following list
 let g:pathogen_disabled = []
-"call add(g:pathogen_disables, 'supertab')
+"example syntax:
+"call add(g:pathogen_disabled, 'supertab')
 
 "using pathogen to manage plugins... waaay easier than doing it manually
 "[http://www.vim.org/scripts/script.php?script_id=23321] these functions read
-"all plugins and update tags (help) files
+"all plugins and update tags (help) files. The latter can be a tiny bit slow, so I 
+"usually just run it from the command line with :Helptags
 call pathogen#infect() 
 "call pathogen#helptags()
 
-" Vim will have the memory of an *elephant* I tell you!
+"" Vim will have the memory of an *elephant* I tell you!
 
 "keep a lot of history... good for leaky memories like the one in my head
 set history=1000
@@ -38,7 +42,10 @@ au BufLeave,FocusLost * silent! :wall
 "automatically update a file if something changes it from outside vim
 set autoread
 
-"use incremental searching... it just makes sense
+"highlight those search terms. why not?
+set hlsearch
+
+"and highlight incrementally as you search
 set incsearch
 
 "but ignore case in those searchs
@@ -50,17 +57,15 @@ set smartcase
 " Wrap search when EOF is reached
 set wrapscan
 
-"highlight those search terms. why not?
-set hlsearch
-
-"I'm not using Vim in a terminal over a dial-up modem, so...
+"I'm not using Vim in a terminal over a dial-up modem, so... turn on the
+"afterburners
 set ttyfast
 
 "We all make mistakes
 set undofile
 
 "but I don't want undofiles all over the place
-set undodir=$HOME/.vim/undofiles
+set undodir=$HOME/.vim/.undofiles
 
 "make backup files in this directory (so they're not all over)
 set backupdir=$HOME/.vim/.backups
@@ -75,6 +80,7 @@ set nowritebackup
 set wildmenu
 
 "when completing, list all matches and complete until longest common
+"i.e. complete only to the point where further completion is ambiguous
 set wildmode=list:longest
 
 "copy indentation when starting a new line
@@ -138,6 +144,10 @@ set nu
 "shorten messages so I don't get the whole yes/no/esc/etc business so often
 "and hide or shorten various vim messages
 set shortmess=atTI
+
+"make C-e and C-y scroll by 5 lines at a time rather than 1
+nnoremap <C-e> 5<C-e>
+nnoremap <C-y> 5<C-y>
 
 "show three lines in the command line so I don't get 'press enter' msgs so
 "much set cmdheight=1 for screen recording
@@ -218,13 +228,15 @@ inoremap jk <ESC>
 noremap gg gg^
 noremap G G$
 
+"" Trying to decide if it's good or bad to not get the real shortcuts 
+"" under my fingers
 "use Arrow keys to move between windows
 nmap <Up> <C-W>k
 nmap <Down> <C-W>j
 nmap <Left> <C-W>h
 nmap <Right> <C-W>l
 
-" press * or # to search for the current selectio
+" press * or # to search for the current selection
 vnoremap <silent> * :call VisualSearch('f')<CR>
 vnoremap <silent> # :call VisualSearch('b')<CR>
 
@@ -232,16 +244,11 @@ vnoremap <silent> # :call VisualSearch('b')<CR>
 nmap <C-\\> <ESC>:call TogglePaste()<CR>
 imap <C-\\> <ESC>:call TogglePaste()<CR>
 
-
-
 " show word count of current buffer 
 noremap <leader>wc :echo WordCount()<CR>
 
 " turn the annoying search highlighting off when I'm done
 nnoremap <leader><space> :noh<cr>
-nnoremap <leader><space><space> :nohlsearch<cr>
-nnoremap <leader><space><space> :hlsearch
-
 
 " Bash like keys for the command line
 cnoremap <C-A>      <Home>
@@ -250,11 +257,12 @@ cnoremap <C-K>      <C-U>
 cnoremap <C-P> <Up>
 cnoremap <C-N> <Down>
 
+"" Trying to decide if I am really this lazy or not
 " open new tab
-map <C-t><C-t> :tabnew<CR>
+"map <C-t><C-t> :tabnew<CR>
 
 " close current tab
-map <C-t><C-w> :tabclose<CR>
+"map <C-t><C-w> :tabclose<CR>
 
 " Add an empty line above or below current position
 nmap <leader>O m`O<ESC>``
