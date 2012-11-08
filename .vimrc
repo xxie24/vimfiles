@@ -224,6 +224,8 @@ let mapleader = ","
 "thanks Steve Losh http://learnvimscriptthehardway.stevelosh.com/chapters/10.html
 inoremap jk <ESC>
 
+"disable the ESC key to force my self to get the above "under my fingers"
+
 "make top and bottom commands go to actual beginning and end of file
 noremap gg gg^
 noremap G G$
@@ -316,8 +318,9 @@ nnoremap <leader>Q :silent! wallq<cr>
 "write current file and quit, no questions asked
 nnoremap <leader>q :wq!<cr>
 
-"Since I'm always editing this file, a shortcut to do so
+"shortcuts to some common files'
 nnoremap <leader>ev :tabe $MYVIMRC<cr>
+nnoremap <leader>esm :tabe ~/scratch.md<cr>
 
 "And source it, baby, source it!
 nnoremap <leader>sv :so $MYVIMRC<CR>
@@ -532,3 +535,9 @@ source ~/.vim/vimrc/myfuncs.vim
 if has('gui_running')
   source ~/.vim/vimrc/mygfuncs.vim
 endif
+
+
+au BufNewFile,BufRead *.md setlocal dictionary+=/usr/share/dict/words
+au BufNewFile,BufRead *.md setlocal complete+=k
+
+map <Esc> <Nop>
