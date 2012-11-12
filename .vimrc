@@ -437,9 +437,11 @@ let g:voom_tree_width=35
 
 " NERDTree filesystem explorer for browsing directories...you feel me?
 " [https://github.com/scrooloose/nerdtree]
-let NERDTreeMinimalUI=1
+"let NERDTreeMinimalUI=1
 let NERDTreeDirArrows=1
-
+let NERDTreeShowBookmarks=1
+let NERDChristmasTree=1
+let NERDTreeHighlightCursorline=1
 " Gundo: visualize your undo tree. It's like back to the future!
 " [http://sjl.bitbucket.org/gundo.vim/]
 let g:gundo_width=22
