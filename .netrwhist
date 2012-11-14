@@ -1,11 +1,2 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =9
-let g:netrw_dirhist_1='/Users/chrislott/Dropbox/MySites/ptp'
-let g:netrw_dirhist_2='/Applications/MacVim.app/Contents/Resources/vim/runtime/doc'
-let g:netrw_dirhist_3='/Users/chrislott'
-let g:netrw_dirhist_4='/Users/chrislott/temp'
-let g:netrw_dirhist_5='/Users/chrislott'
-let g:netrw_dirhist_6='ftp://clinki.es/'
-let g:netrw_dirhist_7='ftp://clinki.es/tmp/'
-let g:netrw_dirhist_8='ftp://clinki.es/www/'
-let g:netrw_dirhist_9='ftp://clinkie.es/www/'
+let g:netrw_dirhist_cnt =0

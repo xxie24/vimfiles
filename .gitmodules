@@ -91,3 +91,6 @@
 [submodule "plugin/shuffle"]
 	path = plugin/shuffle
 	url = https://github.com/vim-scripts/shuffle.vim.git
+[submodule "bundle/vim-signature"]
+	path = bundle/vim-signature
+	url = https://github.com/kshenoy/vim-signature.git

@@ -539,7 +539,7 @@ if has('gui_running')
 endif
 
 
-au BufNewFile,BufRead *.md setlocal dictionary+=/usr/share/dict/words
-au BufNewFile,BufRead *.md setlocal complete+=k
+"au BufNewFile,BufRead *.md setlocal dictionary+=/usr/share/dict/words
+"au BufNewFile,BufRead *.md setlocal complete+=k
 
 map <Esc> <Nop>
