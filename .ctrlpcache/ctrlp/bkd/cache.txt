@@ -1,0 +1,3 @@
+ow	/Users/chris/db/personal/others-writing/
+mw	/Users/chris/db/personal/mywriting/
+per	/Users/chris/db/personal/
