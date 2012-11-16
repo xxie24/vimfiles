@@ -218,6 +218,8 @@ set mouse=
  
 "use a better key for leader commands (the ones that play 'Follow the Leader')
 let mapleader = ","
+let maplocalleader = ","
+
 
 "use jk to exit insert mode...no more reaching up for ESC key
 "thanks Steve Losh http://learnvimscriptthehardway.stevelosh.com/chapters/10.html
@@ -266,8 +268,8 @@ cnoremap <C-N> <Down>
 "map <C-t><C-w> :tabclose<CR>
 
 " Add an empty line above or below current position
-nmap <leader>O m`O<ESC>``
-nmap <leader>o m`o<ESC>``
+"nmap <leader>O m`O<ESC>``
+"nmap <leader>o m`o<ESC>``
 
 " re-select whatever I just pasted
 nnoremap <leader>v V`]

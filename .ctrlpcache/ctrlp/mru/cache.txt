@@ -1,7 +1,12 @@
+/Users/chris/Dropbox/personal/mywriting/prose/tanka-notes.md
+/Users/chris/Dropbox/personal/others-writing/onwriting/on-tanka.md
+/Users/chris/Dropbox/personal/mysites/ptp/frank-stanford/stanford-singing-knives.md
 /Users/chris/Dropbox/personal/mysites/ptp/frank-stanford/stanford-hidden-water.md
-/Users/chris/Dropbox/appsupport/vim/.vim/vimrc/mygfuncs.vim
+/Users/chris/.vim/bundle/vim-pandoc/doc/pandoc.txt
 /Users/chris/.vimrc
 /Users/chris/Dropbox/appsupport/vim/.vim/.git/COMMIT_EDITMSG
+/Users/chris/.vim/bundle/voom/doc/voom.txt
+/Users/chris/Dropbox/appsupport/vim/.vim/vimrc/mygfuncs.vim
 /Users/chris/Dropbox/appsupport/vim/.vim/.git/config
 /Users/chris/Dropbox/appsupport/vim/.vim/.gitmodules
 /Users/chris/.vim/vimrc/mygfuncs.vim
@@ -10,7 +15,6 @@
 /Users/chris/scratch.md
 /Users/chris/.vim/bundle/ctrlp/doc/ctrlp.txt
 /Applications/MacVim.app/Contents/Resources/vim/runtime/doc/index.txt
-/Users/chris/Dropbox/personal/others-writing/onwriting/on-tanka.md
 /Users/chris/Dropbox/appsupport/vim/.vim/bundle/ctrlp/doc/ctrlp.txt
 /Users/chris/.vimperatorrc
 /Users/chris/Library/Caches/TemporaryItems/vimperator-mail.google.com.tmp
