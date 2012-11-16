@@ -198,6 +198,9 @@ au BufNewFile,BufRead *.md setlocal filetype=pandoc
 au BufNewFile,BufRead *.md setlocal spell 
 au BufNewFile,BufRead *.md setlocal equalprg=pandoc\ -t\ markdown\ --no-wrap
 
+" Use par for (re)formatting email messages
+au BufNewFile,BufRead *.mail setlocal equalprg="/usr/local/bin/par -q+"
+
 " http://vim.wikia.com/wiki/Vim_as_XML_Editor
 let g:xml_syntax_folding=1
 au FileType xml setlocal foldmethod=syntax
@@ -425,9 +428,18 @@ map <leader><tab> :Scratch<CR>
 
 " CtrlP [https://github.com/kien/ctrlp.vim] seems to be the best buffer
 " switching, file finding, most-recently used selecting utility around.
-nnoremap <leader>f :CtrlP<CR>
-nnoremap <leader>b :CtrlPBuffer<CR>
-nnoremap <leader>r :CtrlPMRUFiles<CR>
+"nnoremap <leader>pf :CtrlP<CR>
+nnoremap <leader>pb :CtrlPBuffer<CR>
+nnoremap <leader>pr :CtrlPMRUFiles<CR>
+nnoremap <leader>pb :CtrlPBookmarkDir<CR>
+
+let g:ctrlp_map = '<leader>p'
+let g:ctrlp_cmd = 'CtrlP'
+
+let g:ctrlp_use_caching = 1
+let g:ctrlp_clear_cache_on_exit = 0
+let g:ctrlp_cache_dir = $HOME.'/.vim/.ctrlpcache/ctrlp'
+let g:ctrlp_working_path_mode = 'ra'
 let g:ctrlp_open_new_file = 't'
 let g:ctrlp_arg_map = 1
 let g:ctrlp_match_window_reversed = 0
@@ -542,4 +554,4 @@ endif
 "au BufNewFile,BufRead *.md setlocal dictionary+=/usr/share/dict/words
 "au BufNewFile,BufRead *.md setlocal complete+=k
 
-map <Esc> <Nop>
+
