@@ -4,7 +4,7 @@
 [submodule "bundle/ctrlp"]
 	path = bundle/ctrlp
 	url = https://github.com/kien/ctrlp.vim.git
-    ignore=dirty
+    ignore = dirty
 [submodule "bundle/delimitmate"]
 	path = bundle/delimitmate
 	url = https://github.com/Raimondi/delimitMate.git
@@ -78,7 +78,7 @@
 [submodule "bundle/gundo"]
 	path = bundle/gundo
     url = https://github.com/sjl/gundo.vim.git
-    ignore=dirty
+    ignore = dirty
 [submodule "bundle/vim-latex-suite"]
 	path = bundle/vim-latex-suite
 	url = git@github.com:gerw/vim-latex-suite.git
