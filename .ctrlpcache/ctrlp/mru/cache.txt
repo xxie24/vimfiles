@@ -1,3 +1,5 @@
+/Users/chris/Dropbox/appsupport/vim/.vim/.gitmodules
+/Users/chris/Dropbox/appsupport/vim/.vim/.git/config
 /Users/chris/Dropbox/appsupport/vim/.vim/.git/COMMIT_EDITMSG
 /Users/chris/Dropbox/appsupport/vim/.vim/.ctrlpcache/.gitignore
 /Users/chris/Dropbox/personal/mywriting/prose/tanka-notes.md
@@ -8,8 +10,6 @@
 /Users/chris/.vimrc
 /Users/chris/.vim/bundle/voom/doc/voom.txt
 /Users/chris/Dropbox/appsupport/vim/.vim/vimrc/mygfuncs.vim
-/Users/chris/Dropbox/appsupport/vim/.vim/.git/config
-/Users/chris/Dropbox/appsupport/vim/.vim/.gitmodules
 /Users/chris/.vim/vimrc/mygfuncs.vim
 /Users/chris/scratch.mail
 /Users/chris/scratch.ml
