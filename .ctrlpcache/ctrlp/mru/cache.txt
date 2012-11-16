@@ -1,9 +1,9 @@
-/Users/chris/Dropbox/appsupport/vim/.vim/.git/config
-/Users/chris/Dropbox/appsupport/vim/.vim/.gitmodules
-/Users/chris/Dropbox/appsupport/vim/.vim/.git/COMMIT_EDITMSG
 /Users/chris/Dropbox/personal/mysites/ptp/frank-stanford/stanford-hidden-water.md
 /Users/chris/Dropbox/appsupport/vim/.vim/vimrc/mygfuncs.vim
 /Users/chris/.vimrc
+/Users/chris/Dropbox/appsupport/vim/.vim/.git/COMMIT_EDITMSG
+/Users/chris/Dropbox/appsupport/vim/.vim/.git/config
+/Users/chris/Dropbox/appsupport/vim/.vim/.gitmodules
 /Users/chris/.vim/vimrc/mygfuncs.vim
 /Users/chris/scratch.mail
 /Users/chris/scratch.ml
