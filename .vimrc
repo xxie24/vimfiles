@@ -114,7 +114,7 @@ set statusline=%<%f%m\ \[%{&ff}:%Y]\ %{getcwd()}\ \ \[%{strftime('%Y/%b/%d\ %a\ 
 set background=dark
 
 "a subtle highlight for current line
-:hi CursorLine   cterm=NONE ctermbg=NONE ctermfg=white guibg=gray13 guifg=NONE
+:hi CursorLine   cterm=NONE ctermbg=NONE ctermfg=white Guibg=gray13 guifg=NONE
 
 "a nice bright green cursor. Just like the olden days.
 :highlight Cursor cterm=NONE ctermbg=NONE guifg=black guibg=LawnGreen
@@ -122,15 +122,12 @@ set background=dark
 "turn that cursor up to 11!
 :set cursorline
 
-"version of candycode made with csapprox
-"color candycode-term
+" I want candy!
 color candycode
-
 
 "}}}
 
 " ----- EDITING -----{{{
-
 
 "allow cursor to move one character beyond end of line
 set virtualedit=onemore
@@ -185,7 +182,6 @@ set foldopen&
 " ----- FILETYPE STUFF {{{
 
 "load appropriate filetype plugins and their associated indenting
-
 
 filetype plugin indent on
 
@@ -284,9 +280,7 @@ nnoremap <leader>v V`]
 "http://markedapp.com/
 nnoremap <leader>m :silent !open -a Marked.app '%:p'<CR>
 
-"Open current markdown document as HTML in Chrome
-"nnoremap <silent><leader>mv :silent !pandoc -f markdown -t html -s -o %:r.html %:r.md && sleep .5 && open -a /Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome %:r.html<CR>
-
+" View current Pandoc file in Safari (which is smart enough to reuse tabs)
 nnoremap <silent><leader>mv :silent !pandoc -f markdown -t html -s -o %:r.html %:r.md && sleep .5 && open -a /Applications/Safari.app/Contents/MacOS/Safari %:r.html<CR>
 
 "Open current markdown document as PDF in Preview
@@ -327,14 +321,6 @@ nnoremap <leader>esm :tabe ~/scratch.md<cr>
 
 "And source it, baby, source it!
 nnoremap <leader>sv :so $MYVIMRC<CR>
-
-"Switch to some commonly used directories (useful for CtrlP)
-noremap <leader>dc :cd <C-R>=expand('%:p:h') . '/'<CR><CR>
-noremap <leader>dlt :cd ~/db/personal/mywriting/letters<CR>
-noremap <leader>dcpb :cd ~/db/personal/mysites/cpb<CR>
-noremap <leader>dptp :cd ~/db/personal/mysites/ptp/<cr>
-noremap <leader>drum :cd ~/db/personal/mysites/rum<CR>
-noremap <leader>dg :cd ~/db/personal/mysites/geek<CR>
 
 " :TOhtml configuration
 let use_xhtml = 1
@@ -431,7 +417,7 @@ map <leader><tab> :Scratch<CR>
 "nnoremap <leader>pf :CtrlP<CR>
 nnoremap <leader>pb :CtrlPBuffer<CR>
 nnoremap <leader>pr :CtrlPMRUFiles<CR>
-nnoremap <leader>pb :CtrlPBookmarkDir<CR>
+nnoremap <leader>pm :CtrlPBookmarkDir<CR>
 
 let g:ctrlp_map = '<leader>p'
 let g:ctrlp_cmd = 'CtrlP'
