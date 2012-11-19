@@ -1,3 +1,5 @@
+/Users/chris/.bashrc
+/Users/chris/Dropbox/appsupport/vim/.vim/.git/COMMIT_EDITMSG
 /Users/chris/.vimrc
 /Users/chris/Dropbox/appsupport/vim/.vim/vimrc/myfuncs.vim
 /Users/chris/Dropbox/manuals-guides-refs/pentadactyl-help/index.html
@@ -16,7 +18,6 @@
 /private/var/folders/3_/bhftkfzs1nz_cd9ftrtsl3ch0000gn/T/bash-fc-1353231458
 /Users/chris/Dropbox/appsupport/gitprojects/dotfiles/.pentadactylrc
 /Users/chris/.vimperatorrc
-/Users/chris/.bashrc
 /Users/chris/Library/Caches/TemporaryItems/vimperator-mail.google.com-2.tmp
 /private/var/folders/k_/47fhg8r56pg_4m63n33qvn_w0000gn/T/bash-fc-4058604309
 /private/var/folders/k_/47fhg8r56pg_4m63n33qvn_w0000gn/T/bash-fc-1353132800
@@ -67,7 +68,6 @@
 /private/var/folders/3_/bhftkfzs1nz_cd9ftrtsl3ch0000gn/T/bash-fc-4058710553
 /private/var/folders/3_/bhftkfzs1nz_cd9ftrtsl3ch0000gn/T/bash-fc-1353113195
 /Users/chris/Dropbox/appsupport/vim/.vim/.ctrlpcache/.gitignore
-/Users/chris/Dropbox/appsupport/vim/.vim/.git/COMMIT_EDITMSG
 /Users/chris/Dropbox/appsupport/vim/.vim/.git/config
 /Users/chris/Dropbox/appsupport/vim/.vim/.gitmodules
 /Users/chris/.vim/bundle/vim-pandoc/doc/pandoc.txt
