@@ -133,7 +133,7 @@ endfunction
    " do nothing, even in op-pending mode
    return ""
  endfunc
-endif
+" endif
 
 "return '[&et]' if &et is set wrong
 "return '[mixed-indenting]' if spaces and tabs are used to indent

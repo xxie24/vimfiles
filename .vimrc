@@ -404,7 +404,7 @@ let g:voom_tree_width=45
 let NERDTreeDirArrows=1
 let NERDTreeShowBookmarks=1
 let NERDChristmasTree=1
-let NERDTreeHighlightCursorline=1i
+let NERDTreeHighlightCursorline=1
 
 " Gundo: visualize your undo tree. It's like back to the future!
 " [http://sjl.bitbucket.org/gundo.vim/]
@@ -427,6 +427,7 @@ if exists('+relativenumber')
  nnoremap <expr> <F9> CycleLNum()
  xnoremap <expr> <F9> CycleLNum()
  onoremap <expr> <F9> CycleLNum()
+endif
 
 let g:Powerline_symbols = 'fancy'
 

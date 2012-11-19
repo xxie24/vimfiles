@@ -1,6 +1,6 @@
-/Users/chris/Dropbox/manuals-guides-refs/pentadactyl-help/index.html
-/Users/chris/Dropbox/appsupport/vim/.vim/vimrc/myfuncs.vim
 /Users/chris/.vimrc
+/Users/chris/Dropbox/appsupport/vim/.vim/vimrc/myfuncs.vim
+/Users/chris/Dropbox/manuals-guides-refs/pentadactyl-help/index.html
 /Users/chris/.vim/bundle/voom/doc/voom.txt
 /Applications/MacVim.app/Contents/Resources/vim/runtime/doc/options.txt
 /Users/chris/Dropbox/appsupport/vim/.vim/vimrc/mygfuncs.vim
