@@ -79,3 +79,79 @@ function! BufOnly(buffer, bang)
 endfunction
 
 
+" show a word count fo the current buffer
+function! WordCount()
+  let s:old_status = v:statusmsg
+  exe "silent normal g\<c-g>"
+  let s:word_count = str2nr(split(v:statusmsg)[11])
+  let v:statusmsg = s:old_status
+  return s:word_count
+endfunction
+
+" when pasting from the OS into the terminal, you should use 'paste mode' to
+" prevent any mappings (such as 'jj' and the like from being run. This makes a
+" simple toggle to turn it on and off
+function! TogglePaste()
+    if  &paste == 0
+        set paste
+        echo "Paste is ON!"
+    else
+        set nopaste
+        echo "Paste is OFF!"
+    endif
+endfunction
+
+" function to search for word under cursor
+function! VisualSearch(direction) range
+  let l:saved_reg = @"
+  execute "normal! vgvy"
+  let l:pattern = escape(@", '\\/.*$^~[]')
+  let l:pattern = substitute(l:pattern, "\n$", "", "")
+  if a:direction == 'b'
+    execute "normal ?" . l:pattern . "^M"
+  elseif a:direction == 'gv'
+    call CmdLine("vimgrep " . '/'. l:pattern . '/' . ' **/*.')
+  elseif a:direction == 'f'
+    execute "normal /" . l:pattern . "^M"
+  endif
+  let @/ = l:pattern
+  let @" = l:saved_reg
+endfunction
+
+ " function to cycle between normal, relative, and no line numbering
+ func! CycleLNum()
+   if &l:rnu
+     setlocal nu
+   elseif &l:nu
+     setlocal nonu
+   else
+     setlocal rnu
+   endif
+   " sometimes (like in op-pending mode) the redraw doesn't happen
+   " automatically
+   redraw
+   " do nothing, even in op-pending mode
+   return ""
+ endfunc
+endif
+
+"return '[&et]' if &et is set wrong
+"return '[mixed-indenting]' if spaces and tabs are used to indent
+"return an empty string if everything is fine
+function! TabWarning()
+  if !exists("b:tab_warning")
+    let tabs = search('^\t', 'nw') != 0
+    let spaces = search('^ ', 'nw') != 0
+
+    if tabs && spaces
+      let b:tab_warning = '[mixed-indenting]'
+    elseif (spaces && !&et) || (tabs && &et)
+      let b:tab_warning = '[&et]'
+    else
+      let b:tab_warning = ''
+    endif
+  endif
+  return b:tab_warning
+endfunction
+
+

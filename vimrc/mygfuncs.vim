@@ -1,5 +1,5 @@
 " set color scheme
-color candycode
+" color candycode
 
 " initial window position
   winpos 220 30

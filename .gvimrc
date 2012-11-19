@@ -28,7 +28,7 @@ color candycode
   
   "use a pretty font (though I'd like to find something better)
   "set guifont=Consolas:h14
-  set guifont=Source\ Code\ Pro\ Light:h14
+  set guifont=Source\ Code\ Pro\ Light:h16
   "set guifont=Source\ Code\ Pro\ for\ Powerline:h14
   set lsp=2
  

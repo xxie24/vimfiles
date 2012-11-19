@@ -7,12 +7,19 @@ set nocompatible
 "paste from and to other apps)
 set clipboard=unnamed
 
+source ~/.vim/vimrc/myfuncs.vim
+
+if has('gui_running')
+  source ~/.vim/vimrc/mygfuncs.vim
+endif
+
 "" Pathogen is a great way to manage plugins, but sometimes I need 
 "" temporarily disable a plugin, which I do below.
 " To disable a plugin, add it's bundle name to the following list
 let g:pathogen_disabled = []
 "example syntax:
 "call add(g:pathogen_disabled, 'supertab')
+call add(g:pathogen_disabled, 'vim-signature')
 
 "using pathogen to manage plugins... waaay easier than doing it manually
 "[http://www.vim.org/scripts/script.php?script_id=23321] these functions read
@@ -108,7 +115,7 @@ set smarttab
 " look at all the pretty colors
 syntax enable
 
-set statusline=%<%f%m\ \[%{&ff}:%Y]\ %{getcwd()}\ \ \[%{strftime('%Y/%b/%d\ %a\ %I:%M\ %p')}\]\ \ [%{'t:'.tabpagenr()}\/%{tabpagenr('$')}]\ %=\ Line:%l\/%L\ Column:%c%V\ %P
+"set statusline=%<%f%m\ \[%{&ff}:%Y]\ %{getcwd()}\ \ \[%{strftime('%Y/%b/%d\ %a\ %I:%M\ %p')}\]\ \ [%{'t:'.tabpagenr()}\/%{tabpagenr('$')}]\ %=\ Line:%l\/%L\ Column:%c%V\ %P
 
 "I don't care what "they" say, dark backgrounds are easier on the screen eyes
 set background=dark
@@ -129,6 +136,9 @@ color candycode
 
 " ----- EDITING -----{{{
 
+"re-read files that have changed by forces outside of Vim
+set autoread
+
 "allow cursor to move one character beyond end of line
 set virtualedit=onemore
 
@@ -141,10 +151,6 @@ set nu
 "shorten messages so I don't get the whole yes/no/esc/etc business so often
 "and hide or shorten various vim messages
 set shortmess=atTI
-
-"make C-e and C-y scroll by 5 lines at a time rather than 1
-nnoremap <C-e> 5<C-e>
-nnoremap <C-y> 5<C-y>
 
 "show three lines in the command line so I don't get 'press enter' msgs so
 "much set cmdheight=1 for screen recording
@@ -185,11 +191,13 @@ set foldopen&
 
 filetype plugin indent on
 
+" if editing vimscript/vimrc, fold using {{{ }}}
 augroup filetype_vim 
     au! 
     au FileType vim setlocal foldmethod=marker 
 augroup END
 
+" if editing Pandoc/Markdown, set filetype, enable spell, reformat w/pandoc
 au BufNewFile,BufRead *.md setlocal filetype=pandoc 
 au BufNewFile,BufRead *.md setlocal spell 
 au BufNewFile,BufRead *.md setlocal equalprg=pandoc\ -t\ markdown\ --no-wrap
@@ -213,7 +221,7 @@ imap <down> <nop>
 imap <left> <nop>
 imap <right> <nop>
 
-"disable use of the mouse... I'm trying to get the kbd under my fingertips
+"disable use of the mouse...I don't need no steenkin mouse
 set mouse=
  
 "use a better key for leader commands (the ones that play 'Follow the Leader')
@@ -224,8 +232,6 @@ let maplocalleader = ","
 "use jk to exit insert mode...no more reaching up for ESC key
 "thanks Steve Losh http://learnvimscriptthehardway.stevelosh.com/chapters/10.html
 inoremap jk <ESC>
-
-"disable the ESC key to force my self to get the above "under my fingers"
 
 "make top and bottom commands go to actual beginning and end of file
 noremap gg gg^
@@ -352,53 +358,13 @@ let tlist_make_settings  = 'make;m:makros;t:targets'
 "}}}
 
 " ----- USER FUNCTIONS ----- {{{
-
-" show a word count fo the current buffer
-function! WordCount()
-  let s:old_status = v:statusmsg
-  exe "silent normal g\<c-g>"
-  let s:word_count = str2nr(split(v:statusmsg)[11])
-  let v:statusmsg = s:old_status
-  return s:word_count
-endfunction
-
-" when pasting from the OS into the terminal, you should use 'paste mode' to
-" prevent any mappings (such as 'jj' and the like from being run. This makes a
-" simple toggle to turn it on and off
-function! TogglePaste()
-    if  &paste == 0
-        set paste
-        echo "Paste is ON!"
-    else
-        set nopaste
-        echo "Paste is OFF!"
-    endif
-endfunction
-
-" function to search for word under cursor
-function! VisualSearch(direction) range
-  let l:saved_reg = @"
-  execute "normal! vgvy"
-  let l:pattern = escape(@", '\\/.*$^~[]')
-  let l:pattern = substitute(l:pattern, "\n$", "", "")
-  if a:direction == 'b'
-    execute "normal ?" . l:pattern . "^M"
-  elseif a:direction == 'gv'
-    call CmdLine("vimgrep " . '/'. l:pattern . '/' . ' **/*.')
-  elseif a:direction == 'f'
-    execute "normal /" . l:pattern . "^M"
-  endif
-  let @/ = l:pattern
-  let @" = l:saved_reg
-endfunction
-
-
+" moved to myfuncs.vim
 " }}}
 
 " ----- PLUGINS AND PLUGIN SETTINGS {{{
 
 " EasyMotion will let you get around faster than the prom queen did the
-" football team []
+" football team 
 let g:EasyMotion_mapping_f = 'ff'
 let g:EasyMotion_mapping_F = 'fF'
 let g:EasyMotion_mapping_w = 'fw'
@@ -410,9 +376,6 @@ let g:EasyMotion_mapping_k = 'fk'
 let g:EasyMotion_mapping_n = 'fn'
 let g:EasyMotion_mapping_N = 'fp'
 
-" Sometimes you just need a scratch buffer you don't have to worry about to
-" futz around in: [http://www.vim.org/scripts/script.php?script_id=664]
-map <leader><tab> :Scratch<CR>
 
 " CtrlP [https://github.com/kien/ctrlp.vim] seems to be the best buffer
 " switching, file finding, most-recently used selecting utility around.
@@ -433,7 +396,7 @@ let g:ctrlp_arg_map = 1
 let g:ctrlp_match_window_reversed = 0
 
 " Va-va-Voom, the tree outliner folder with panache [http://vim-voom.github.com/]
-let g:voom_tree_width=35
+let g:voom_tree_width=45
 
 " NERDTree filesystem explorer for browsing directories...you feel me?
 " [https://github.com/scrooloose/nerdtree]
@@ -441,7 +404,8 @@ let g:voom_tree_width=35
 let NERDTreeDirArrows=1
 let NERDTreeShowBookmarks=1
 let NERDChristmasTree=1
-let NERDTreeHighlightCursorline=1
+let NERDTreeHighlightCursorline=1i
+
 " Gundo: visualize your undo tree. It's like back to the future!
 " [http://sjl.bitbucket.org/gundo.vim/]
 let g:gundo_width=22
@@ -452,49 +416,19 @@ nnoremap <leader>u :GundoToggle<CR>
 " https://github.com/kana/vim-scratch
 map <Leader>so :ScratchOpen<cr>
 map <Leader>sc :ScratchClose<cr>
- 
+
 " }}}
 
 " ----- TESTING, PENDING DELETION, UNCATEGORIZED {{{
 
-"set maplocalleader = ","
-
+" If Vim is compiled with relative numbering, use F9
+" to switch between relative, none, and standard numbering
 if exists('+relativenumber')
  nnoremap <expr> <F9> CycleLNum()
  xnoremap <expr> <F9> CycleLNum()
  onoremap <expr> <F9> CycleLNum()
 
- " function to cycle between normal, relative, and no line numbering
- func! CycleLNum()
-   if &l:rnu
-     setlocal nu
-   elseif &l:nu
-     setlocal nonu
-   else
-     setlocal rnu
-   endif
-   " sometimes (like in op-pending mode) the redraw doesn't happen
-   " automatically
-   redraw
-   " do nothing, even in op-pending mode
-   return ""
- endfunc
-endif
-
-
-let g:languagetool_jar='/Users/chrislott/Dropbox/apps/unix/languagetool/LanguageTool.jar'
-
-"autocmd BufNewFile,BufRead */mutt-* set filetype=mail
-"au FileType mail set tw=64 autoindent expandtab formatoptions=tcqn
-"au FileType mail set list listchars=tab:»·,trail:·
-"au FileType mail set comments=nb:>
-"au FileType mail vmap D dO[...]^[
-"au FileType mail silent normal /--\s*$^MO^[gg/^$^Mj
-
 let g:Powerline_symbols = 'fancy'
-
-" insert trailing whitespace marker segment
-"call Pl#Theme#InsertSegment('ws_marker', 'after', 'lineinfo')
 
 " Add Tab Warning Segment
 call Pl#Theme#InsertSegment(['raw', '%{TabWarning()}'], 'after', 'fileinfo')
@@ -502,44 +436,5 @@ call Pl#Theme#InsertSegment(['raw', '%{TabWarning()}'], 'after', 'fileinfo')
 "recalculate the tab warning flag when idle and after writing
 autocmd cursorhold,bufwritepost * unlet! b:tab_warning
 
-"return '[&et]' if &et is set wrong
-"return '[mixed-indenting]' if spaces and tabs are used to indent
-"return an empty string if everything is fine
-function! TabWarning()
-  if !exists("b:tab_warning")
-    let tabs = search('^\t', 'nw') != 0
-    let spaces = search('^ ', 'nw') != 0
-
-    if tabs && spaces
-      let b:tab_warning = '[mixed-indenting]'
-    elseif (spaces && !&et) || (tabs && &et)
-      let b:tab_warning = '[&et]'
-    else
-      let b:tab_warning = ''
-    endif
-  endif
-  return b:tab_warning
-endfunction
-
 " }}}
-
-"tell Vim where the dictionary is
-"set dictionary+=/usr/share/dict/words
-
-"also use dictionary for completion
-"set complete+=k
-
-"re-read files that have changed by forces outside of Vim
-set autoread
-
-source ~/.vim/vimrc/myfuncs.vim
-
-if has('gui_running')
-  source ~/.vim/vimrc/mygfuncs.vim
-endif
-
-
-"au BufNewFile,BufRead *.md setlocal dictionary+=/usr/share/dict/words
-"au BufNewFile,BufRead *.md setlocal complete+=k
-
 
