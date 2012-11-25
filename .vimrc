@@ -200,7 +200,8 @@ augroup END
 " if editing Pandoc/Markdown, set filetype, enable spell, reformat w/pandoc
 au BufNewFile,BufRead *.md setlocal filetype=pandoc 
 au BufNewFile,BufRead *.md setlocal equalprg=pandoc\ -t\ markdown\ --no-wrap
-
+au BufNewFile,BufRead *.md :Voom markdown
+silent qmark r read
 " Use par for (re)formatting email messages
 au BufNewFile,BufRead *.mail setlocal equalprg="/usr/local/bin/par -q+"
 
@@ -463,6 +464,6 @@ autocmd cursorhold,bufwritepost * unlet! b:tab_warning
 " -- TESTING, PENDING DELETION, UNCATEGORIZED {{{1
 
 " I generally use Voom to manage folds
-"set nofoldenable
+set nofoldenable
 
 " }}}

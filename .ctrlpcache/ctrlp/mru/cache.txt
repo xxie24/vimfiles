@@ -1,5 +1,10 @@
-/Users/chris/.pentadactylrc
+/Users/chris/Dropbox/appsupport/vim/.vim/vimrc/mygfuncs.vim
 /Users/chris/.vimrc
+/Users/chris/.vim/vimrc/mygfuncs.vim
+/Users/chris/Dropbox/personal/mywriting/poems/poem-bucket.md
+/Users/chris/.pentadactylrc
+/Applications/MacVim.app/Contents/Resources/vim/runtime/doc/eval.txt
+/Applications/MacVim.app/Contents/Resources/vim/runtime/doc/syntax.txt
 /Users/chris/Dropbox/appsupport/vim/.vim/.git/COMMIT_EDITMSG
 /Users/chris/.bashrc
 /private/var/folders/3_/bhftkfzs1nz_cd9ftrtsl3ch0000gn/T/bash-fc-1353806596
@@ -12,7 +17,6 @@
 /Users/chris/Dropbox/personal/class-school/ED601/week8-likert-survey.md
 /Users/chris/Dropbox/personal/mywriting/crumley-last-good-kiss.txt
 /Users/chris/.NERDTreeBookmarks
-/Users/chris/Dropbox/personal/mywriting/poems/poem-bucket.md
 /Users/chris/Dropbox/appsupport/vim/.vim/bundle/voom/plugin/voom.vim
 /Users/chris/.vimrc.xhtml
 /Users/chris/Downloads/.vimrc
@@ -43,10 +47,8 @@
 /Users/chris/scratch.md
 /Applications/MacVim.app/Contents/Resources/vim/runtime/doc/gui.txt
 /Users/chris/Dropbox/manuals-guides-refs/pentadactyl-help/index.html
-/Users/chris/Dropbox/appsupport/vim/.vim/vimrc/mygfuncs.vim
 /Users/chris/scratch.txt
 /Users/chris/.vim/bundle/mail/doc/mail.txt
-/Applications/MacVim.app/Contents/Resources/vim/runtime/doc/syntax.txt
 /Users/chris/.vim/bundle/vim-latex-suite/doc/latexhelp.txt
 /Applications/MacVim.app/Contents/Resources/vim/runtime/doc/change.txt
 /Users/chris/.vim/bundle/delimitmate/doc/delimitMate.txt
@@ -104,7 +106,6 @@
 /Users/chris/Dropbox/appsupport/vim/.vim/.git/config
 /Users/chris/Dropbox/appsupport/vim/.vim/.gitmodules
 /Users/chris/.vim/bundle/vim-pandoc/doc/pandoc.txt
-/Users/chris/.vim/vimrc/mygfuncs.vim
 /Users/chris/scratch.mail
 /Users/chris/scratch.ml
 /Applications/MacVim.app/Contents/Resources/vim/runtime/doc/index.txt
