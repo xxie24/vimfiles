@@ -201,8 +201,8 @@ augroup END
 au BufNewFile,BufRead *.md setlocal filetype=pandoc 
 au BufNewFile,BufRead *.md setlocal equalprg=pandoc\ -t\ markdown\ --no-wrap
 au BufNewFile,BufRead *.md :Voom markdown
-silent qmark r read
 " Use par for (re)formatting email messages
+
 au BufNewFile,BufRead *.mail setlocal equalprg="/usr/local/bin/par -q+"
 
 " http://vim.wikia.com/wiki/Vim_as_XML_Editor

@@ -1,8 +1,8 @@
-/Users/chris/Dropbox/appsupport/vim/.vim/vimrc/mygfuncs.vim
 /Users/chris/.vimrc
-/Users/chris/.vim/vimrc/mygfuncs.vim
+/Users/chris/Dropbox/appsupport/vim/.vim/vimrc/mygfuncs.vim
 /Users/chris/Dropbox/personal/mywriting/poems/poem-bucket.md
 /Users/chris/.pentadactylrc
+/Users/chris/.vim/vimrc/mygfuncs.vim
 /Applications/MacVim.app/Contents/Resources/vim/runtime/doc/eval.txt
 /Applications/MacVim.app/Contents/Resources/vim/runtime/doc/syntax.txt
 /Users/chris/Dropbox/appsupport/vim/.vim/.git/COMMIT_EDITMSG
