@@ -1,6 +1,8 @@
+/Users/chris/.pentadactylrc
+/Users/chris/.vimrc
+/Users/chris/Dropbox/appsupport/vim/.vim/.git/COMMIT_EDITMSG
 /Users/chris/.bashrc
 /private/var/folders/3_/bhftkfzs1nz_cd9ftrtsl3ch0000gn/T/bash-fc-1353806596
-/Users/chris/.pentadactylrc
 /Users/chris/Dropbox/appsupport/cheaters/cheatsheets/vim.html
 /Users/chris/Dropbox/appsupport/cheaters/index.html
 /Users/chris/Dropbox/appsupport/vim/.vim/bundle/voom/doc/voom.txt
@@ -13,7 +15,6 @@
 /Users/chris/Dropbox/personal/mywriting/poems/poem-bucket.md
 /Users/chris/Dropbox/appsupport/vim/.vim/bundle/voom/plugin/voom.vim
 /Users/chris/.vimrc.xhtml
-/Users/chris/.vimrc
 /Users/chris/Downloads/.vimrc
 /Users/chris/Dropbox/personal/mywriting/prose/tanka-notes.md
 /Users/chris/Dropbox/appsupport/gitprojects/dotfiles/.git/COMMIT_EDITMSG
@@ -25,7 +26,6 @@
 /Users/chris/Library/Caches/TemporaryItems/pentadactyl.txt
 /Applications/MacVim.app/Contents/Resources/vim/runtime/doc/spell.txt
 /Users/chris/Dropbox/appsupport/gitprojects/dotfiles/README.md
-/Users/chris/Dropbox/appsupport/vim/.vim/.git/COMMIT_EDITMSG
 /Users/chris/.pentadactyl/plugins/buftabs.js
 /Users/chris/.vim/bundle/voom/doc/voom.txt
 /Applications/MacVim.app/Contents/Resources/vim/runtime/doc/fold.txt
