@@ -1,4 +1,4 @@
-" ----- PRELIMINARIES ----- {{{
+" -- PRELIMINARIES {{{1
 
 " This isn't Vi, sucka! So no need to pretend.
 set nocompatible
@@ -110,7 +110,7 @@ set smarttab
 
 " }}}
 
-" ----- APPEARANCE ----- {{{
+" -- APPEARANCE {{{1
 
 " look at all the pretty colors
 syntax enable
@@ -134,7 +134,7 @@ color candycode
 
 "}}}
 
-" ----- EDITING -----{{{
+" -- EDITING {{{1
 
 "re-read files that have changed by forces outside of Vim
 set autoread
@@ -185,7 +185,7 @@ set foldopen&
 
 " }}}
 
-" ----- FILETYPE STUFF {{{
+" -- FILETYPE STUFF {{{1
 
 "load appropriate filetype plugins and their associated indenting
 
@@ -199,7 +199,6 @@ augroup END
 
 " if editing Pandoc/Markdown, set filetype, enable spell, reformat w/pandoc
 au BufNewFile,BufRead *.md setlocal filetype=pandoc 
-au BufNewFile,BufRead *.md setlocal spell 
 au BufNewFile,BufRead *.md setlocal equalprg=pandoc\ -t\ markdown\ --no-wrap
 
 " Use par for (re)formatting email messages
@@ -212,7 +211,7 @@ au FileType xml normal zR
 
 "  }}}
 
-" ----- GENERAL KEYBOARD SHORTCUTS, REMAPS & ABBREVS ----- {{{   
+" -- GENERAL KEYBOARD SHORTCUTS, REMAPS & ABBREVS {{{1
 
 " arrow keys do nothing in insert mode (no bad habits for me except beer,
 " donuts and bacon
@@ -221,13 +220,18 @@ imap <down> <nop>
 imap <left> <nop>
 imap <right> <nop>
 
+" move between windows
+nnoremap <C-J> <C-W>j
+nnoremap <C-K> <C-W>k
+nnoremap <C-H> <C-W>h
+nnoremap <C-L> <C-W>l
+
 "disable use of the mouse...I don't need no steenkin mouse
 set mouse=
  
 "use a better key for leader commands (the ones that play 'Follow the Leader')
 let mapleader = ","
 let maplocalleader = ","
-
 
 "use jk to exit insert mode...no more reaching up for ESC key
 "thanks Steve Losh http://learnvimscriptthehardway.stevelosh.com/chapters/10.html
@@ -266,23 +270,25 @@ cnoremap <C-K>      <C-U>
 cnoremap <C-P> <Up>
 cnoremap <C-N> <Down>
 
-"" Trying to decide if I am really this lazy or not
-" open new tab
-"map <C-t><C-t> :tabnew<CR>
-
-" close current tab
-"map <C-t><C-w> :tabclose<CR>
-
 " Add an empty line above or below current position
-"nmap <leader>O m`O<ESC>``
-"nmap <leader>o m`o<ESC>``
+nmap <leader>O m`O<ESC>``
+nmap <leader>o m`o<ESC>``
 
 " re-select whatever I just pasted
-nnoremap <leader>v V`]
+nnoremap gp V`]
 
- " }}}
+" If Vim is compiled with relative numbering, use F9
+" to switch between relative, none, and standard numbering
+if exists('+relativenumber')
+ nnoremap <expr> <F9> CycleLNum()
+ xnoremap <expr> <F9> CycleLNum()
+ onoremap <expr> <F9> CycleLNum()
+endif
 
-" ----- MARKDOWN / PANDOC WORK ----- {{{
+nmap <silent> <leader>sp :set spell!<CR>
+" }}}
+
+" -- MARKDOWN / PANDOC WORK {{{1
 
 "(pre)view current file in Brett Terpstra's awesome Marked markdown viewer see
 "http://markedapp.com/
@@ -309,7 +315,7 @@ let g:SuperTabDefaultCompletionType = "context"
 
 " }}}
 
-" ----- FILE OPERATIONS ----- {{{
+" -- FILE OPERATIONS {{{1
 
 " Always change to the directory of the current file
 au BufEnter * lcd %:p:h
@@ -337,7 +343,7 @@ let html_ignore_folding = 1
 
 " }}}
 
-" ----- VIM-LATEX {{{
+" -- VIM-LATEX {{{1
 " grep will always generate a file-name otherwise bad grep confuses vim-latex
 set grepprg=grep\ -nH\ $*
 
@@ -357,26 +363,28 @@ let tlist_make_settings  = 'make;m:makros;t:targets'
 
 "}}}
 
-" ----- USER FUNCTIONS ----- {{{
+" -- USER FUNCTIONS ----- {{{1
 " moved to myfuncs.vim
 " }}}
 
-" ----- PLUGINS AND PLUGIN SETTINGS {{{
+" -- PLUGINS AND PLUGIN SETTINGS {{{1
 
+"" -- EasyMotion {{{2
 " EasyMotion will let you get around faster than the prom queen did the
 " football team 
-let g:EasyMotion_mapping_f = 'ff'
-let g:EasyMotion_mapping_F = 'fF'
-let g:EasyMotion_mapping_w = 'fw'
-let g:EasyMotion_mapping_b = 'fb'
-let g:EasyMotion_mapping_e = 'fe'
-let g:EasyMotion_mapping_ge = 'fge'
-let g:EasyMotion_mapping_j = 'fj'
-let g:EasyMotion_mapping_k = 'fk'
-let g:EasyMotion_mapping_n = 'fn'
-let g:EasyMotion_mapping_N = 'fp'
+let g:EasyMotion_mapping_f = 'f'
+let g:EasyMotion_mapping_F = 'F'
+let g:EasyMotion_mapping_w = '<Leader><Leader>fw'
+let g:EasyMotion_mapping_b = '<Leader><Leader>fb'
+let g:EasyMotion_mapping_e = '<Leader><Leader>fe'
+let g:EasyMotion_mapping_ge = '<Leader><Leader>Fe'
+let g:EasyMotion_mapping_j = '<Leader><Leader>fj'
+let g:EasyMotion_mapping_k = '<Leader><Leader>fk'
+let g:EasyMotion_mapping_n = '<Leader><Leader>fn'
+let g:EasyMotion_mapping_N = '<Leader><Leader>fp'
+" }}}
 
-
+"" -- CtrlP {{{2
 " CtrlP [https://github.com/kien/ctrlp.vim] seems to be the best buffer
 " switching, file finding, most-recently used selecting utility around.
 "nnoremap <leader>pf :CtrlP<CR>
@@ -394,41 +402,53 @@ let g:ctrlp_working_path_mode = 'ra'
 let g:ctrlp_open_new_file = 't'
 let g:ctrlp_arg_map = 1
 let g:ctrlp_match_window_reversed = 0
+" }}}
 
+"" -- Voom {{{2
 " Va-va-Voom, the tree outliner folder with panache [http://vim-voom.github.com/]
-let g:voom_tree_width=45
+let g:voom_tree_width=35
+" make sure voomclose kills the outline
+com! Voomclose call Voom_DeleteOutline('')
+nnoremap <leader>vo :Voom<CR>
+nnoremap <leader>vm :Voom markdown<CR>
+nnoremap <leader>vt :VoomToggle<CR>
+" }}}
 
+"" -- NERDTree {{{2
 " NERDTree filesystem explorer for browsing directories...you feel me?
 " [https://github.com/scrooloose/nerdtree]
-"let NERDTreeMinimalUI=1
 let NERDTreeDirArrows=1
 let NERDTreeShowBookmarks=1
 let NERDChristmasTree=1
 let NERDTreeHighlightCursorline=1
+let NERDTreeWinSize=31
+map <leader>no :NERDTree<space>
+map <leader>nb :NERDTreeFromBookmark<space>
+map <leader>nt :execute 'NERDTreeToggle ' . getcwd()<CR>
+map <leader>nf :NERDTreeFind<CR>
+" }}}
 
+"" -- Gundo {{{2
 " Gundo: visualize your undo tree. It's like back to the future!
 " [http://sjl.bitbucket.org/gundo.vim/]
 let g:gundo_width=22
 let g:gundo_preview_bottom=1
 nnoremap <leader>u :GundoToggle<CR>
+" }}}
 
+"" -- Scratch {{{2
 " Scratch provides an Emacs like scratch buffer
 " https://github.com/kana/vim-scratch
 map <Leader>so :ScratchOpen<cr>
 map <Leader>sc :ScratchClose<cr>
-
 " }}}
 
-" ----- TESTING, PENDING DELETION, UNCATEGORIZED {{{
-
-" If Vim is compiled with relative numbering, use F9
-" to switch between relative, none, and standard numbering
-if exists('+relativenumber')
- nnoremap <expr> <F9> CycleLNum()
- xnoremap <expr> <F9> CycleLNum()
- onoremap <expr> <F9> CycleLNum()
-endif
-
+"" -- Powerline {{{2
+" Powerline makes your modeline magical
+" https://github.com/Lokaltog/vim-powerline
+"
+" Fancy it up (need a Powerline patched font)
+" https://github.com/Lokaltog/vim-powerline/wiki/Patched-fonts
 let g:Powerline_symbols = 'fancy'
 
 " Add Tab Warning Segment
@@ -436,6 +456,13 @@ call Pl#Theme#InsertSegment(['raw', '%{TabWarning()}'], 'after', 'fileinfo')
 
 "recalculate the tab warning flag when idle and after writing
 autocmd cursorhold,bufwritepost * unlet! b:tab_warning
+" }}}
 
 " }}}
 
+" -- TESTING, PENDING DELETION, UNCATEGORIZED {{{1
+
+" I generally use Voom to manage folds
+"set nofoldenable
+
+" }}}
