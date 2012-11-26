@@ -1,4 +1,4 @@
-" -- PRELIMINARIES {{{1
+"" -- PRELIMINARIES {{{1
 
 " This isn't Vi, sucka! So no need to pretend.
 set nocompatible
@@ -122,6 +122,7 @@ set background=dark
 
 "a subtle highlight for current line
 :hi CursorLine   cterm=NONE ctermbg=NONE ctermfg=white Guibg=gray13 guifg=NONE
+:hi CursorLine   cterm=NONE ctermbg=NONE ctermfg=white Guibg=gray13 guifg=NONE
 
 "a nice bright green cursor. Just like the olden days.
 :highlight Cursor cterm=NONE ctermbg=NONE guifg=black guibg=LawnGreen
@@ -176,12 +177,15 @@ set laststatus=2
 "allow backspace over indentation, end of line, and to start of insert
 set backspace=indent,eol,start
 
-"keep 10 lines above and below cursor when possiblde
+"keep 10 lines above and below cursor when possible
 set scrolloff=10
 
 "open folds when I need them for searching, etc
 set foldopen = "block,hor,mark,percent,quickfix,search,tag,undo"
 set foldopen&
+
+" I generally use Voom to manage folds
+set nofoldenable
 
 " }}}
 
@@ -332,7 +336,8 @@ nnoremap <leader>q :wq!<cr>
 
 "shortcuts to some common files'
 nnoremap <leader>ev :tabe $MYVIMRC<cr>
-nnoremap <leader>esm :tabe ~/scratch.md<cr>
+nnoremap <leader>es :tabe ~/scratch.md<cr>
+nnoremap <leader>eb :tabe ~/.bashrc
 
 "And source it, baby, source it!
 nnoremap <leader>sv :so $MYVIMRC<CR>
@@ -463,7 +468,5 @@ autocmd cursorhold,bufwritepost * unlet! b:tab_warning
 
 " -- TESTING, PENDING DELETION, UNCATEGORIZED {{{1
 
-" I generally use Voom to manage folds
-set nofoldenable
 
 " }}}
