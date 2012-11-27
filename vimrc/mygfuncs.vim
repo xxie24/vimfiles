@@ -2,7 +2,7 @@
 " color candycode
 
 " initial window position
-winpos 220 30
+winpos 30 30
 
 " start vim with this many lines (how tall) normally 45 for screen recording
 " set to 40
