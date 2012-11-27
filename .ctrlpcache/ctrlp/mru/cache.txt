@@ -1,7 +1,11 @@
-/Users/chris/Dropbox/personal/mywriting/poems/poem-bucket.md
-/Users/chris/Library/Caches/TemporaryItems/pentadactyl.txt
-/Users/chris/Dropbox/appsupport/vim/.vim/.git/COMMIT_EDITMSG
+/Users/chris/Dropbox/appsupport/vim/.vim/.git/modules/bundle/vim-pandoc/MERGE_MSG
 /Users/chris/.vimrc
+/Users/chris/Dropbox/personal/mysites/ptp/sevens/regina-spektor/seven.md
+/Users/chris/Dropbox/personal/mywriting/prose/tanka-notes.md
+/Users/chris/Dropbox/personal/others-writing/onwriting/on-tanka.md
+/Users/chris/Library/Caches/TemporaryItems/pentadactyl.txt
+/Users/chris/Dropbox/personal/mywriting/poems/poem-bucket.md
+/Users/chris/Dropbox/appsupport/vim/.vim/.git/COMMIT_EDITMSG
 /Users/chris/.bashrc
 /Users/chris/Dropbox/appsupport/vim/.vim/vimrc/mygfuncs.vim
 /Users/chris/.pentadactylrc
@@ -21,7 +25,6 @@
 /Users/chris/Dropbox/appsupport/vim/.vim/bundle/voom/plugin/voom.vim
 /Users/chris/.vimrc.xhtml
 /Users/chris/Downloads/.vimrc
-/Users/chris/Dropbox/personal/mywriting/prose/tanka-notes.md
 /Users/chris/Dropbox/appsupport/gitprojects/dotfiles/.git/COMMIT_EDITMSG
 /Users/chris/Library/Caches/TemporaryItems/pentadactyl-1.txt
 /Users/chris/Dropbox/personal/mywriting/poems/singles/rip-kirk-tanka.md
@@ -60,7 +63,6 @@
 /Users/chris/Library/Caches/TemporaryItems/vimperator-mail.google.com-2.tmp
 /private/var/folders/k_/47fhg8r56pg_4m63n33qvn_w0000gn/T/bash-fc-4058604309
 /private/var/folders/k_/47fhg8r56pg_4m63n33qvn_w0000gn/T/bash-fc-1353132800
-/Users/chris/Dropbox/personal/others-writing/onwriting/on-tanka.md
 /Users/chris/Dropbox/personal/mysites/ptp/frank-stanford/stanford-singing-knives.md
 /Users/chris/Dropbox/personal/mysites/ptp/frank-stanford/stanford-hidden-water.md
 /private/var/folders/3_/bhftkfzs1nz_cd9ftrtsl3ch0000gn/T/bash-fc-13795649576

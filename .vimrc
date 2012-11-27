@@ -468,5 +468,28 @@ autocmd cursorhold,bufwritepost * unlet! b:tab_warning
 
 " -- TESTING, PENDING DELETION, UNCATEGORIZED {{{1
 
+" Convert curly quotes to straight.
+" Any argument causes substitute to confirm changes.
+function! ToStraight(line1, line2, args)
+  let flags = 'eg'
+  let range = a:line1 . ',' . a:line2
+  if empty(a:args)
+    let range = 'silent ' . range
+  else
+    let flags .= 'c'
+  endif
+  let search = @/
+  exe range . "s/[‘’]/'/" . flags
+
+  exe range . 's/[“”]/"/' . flags
+  nohl
+  let @/ = search
+endfunction
+command! -nargs=? -range ToStraight call ToStraight(<line1>, <line2>, '<args>') 
+
+"Usage
+  ":%ToStraight    " convert all
+  ":ToStraight     " convert current line only
+  ":%ToStraight c  " convert all and confirm each 
 
 " }}}
