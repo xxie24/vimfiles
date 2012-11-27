@@ -1,5 +1,6 @@
 "" -- PRELIMINARIES {{{1
 
+
 " This isn't Vi, sucka! So no need to pretend.
 set nocompatible
 
@@ -491,5 +492,7 @@ command! -nargs=? -range ToStraight call ToStraight(<line1>, <line2>, '<args>')
   ":%ToStraight    " convert all
   ":ToStraight     " convert current line only
   ":%ToStraight c  " convert all and confirm each 
+
+:winpos -20 35
 
 " }}}
