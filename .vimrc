@@ -1,6 +1,5 @@
 "" -- PRELIMINARIES {{{1
 
-
 " This isn't Vi, sucka! So no need to pretend.
 set nocompatible
 
