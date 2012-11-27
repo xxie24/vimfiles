@@ -492,5 +492,4 @@ command! -nargs=? -range ToStraight call ToStraight(<line1>, <line2>, '<args>')
   ":ToStraight     " convert current line only
   ":%ToStraight c  " convert all and confirm each 
 
-
 " }}}
