@@ -1,4 +1,4 @@
-db	/Users/chris/db/
 mw	/Users/chris/db/personal/mywriting/
+db	/Users/chris/db/
 ow	/Users/chris/db/personal/others-writing/
 per	/Users/chris/db/personal/

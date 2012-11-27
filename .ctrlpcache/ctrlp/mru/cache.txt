@@ -1,4 +1,6 @@
 /Users/chris/Dropbox/personal/mywriting/poems/poem-bucket.md
+/Users/chris/Library/Caches/TemporaryItems/pentadactyl.txt
+/Users/chris/Dropbox/appsupport/vim/.vim/.git/COMMIT_EDITMSG
 /Users/chris/.vimrc
 /Users/chris/.bashrc
 /Users/chris/Dropbox/appsupport/vim/.vim/vimrc/mygfuncs.vim
@@ -7,7 +9,6 @@
 /Users/chris/.vim/vimrc/mygfuncs.vim
 /Applications/MacVim.app/Contents/Resources/vim/runtime/doc/eval.txt
 /Applications/MacVim.app/Contents/Resources/vim/runtime/doc/syntax.txt
-/Users/chris/Dropbox/appsupport/vim/.vim/.git/COMMIT_EDITMSG
 /private/var/folders/3_/bhftkfzs1nz_cd9ftrtsl3ch0000gn/T/bash-fc-1353806596
 /Users/chris/Dropbox/appsupport/cheaters/cheatsheets/vim.html
 /Users/chris/Dropbox/appsupport/cheaters/index.html
@@ -27,7 +28,6 @@
 /Users/chris/Dropbox/personal/mysites/ptp/2012-posts/rip-kirk.md
 /Users/chris/Dropbox/personal/mysites/ptp/cpb/bruce-bond-pill.md
 /Users/chris/Dropbox/personal/mysites/ptp/2012-posts/bap12-pill-bruce-bond.md
-/Users/chris/Library/Caches/TemporaryItems/pentadactyl.txt
 /Applications/MacVim.app/Contents/Resources/vim/runtime/doc/spell.txt
 /Users/chris/Dropbox/appsupport/gitprojects/dotfiles/README.md
 /Users/chris/.pentadactyl/plugins/buftabs.js
