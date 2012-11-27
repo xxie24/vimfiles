@@ -8,11 +8,9 @@ set nocompatible
 "paste from and to other apps)
 set clipboard=unnamed
 
+" various functions are stored in a separate file. too much hassle to do the
+" same with guifunctions
 source ~/.vim/vimrc/myfuncs.vim
-
-if has('gui_running')
-  source ~/.vim/vimrc/mygfuncs.vim
-endif
 
 "" Pathogen is a great way to manage plugins, but sometimes I need 
 "" temporarily disable a plugin, which I do below.
