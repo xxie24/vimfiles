@@ -289,13 +289,13 @@ nmap <silent> <leader>sp :set spell!<CR>
 nnoremap <leader>m :silent !open -a Marked.app '%:p'<CR>
 
 " View current Pandoc file in Safari (which is smart enough to reuse tabs)
-nnoremap <silent><leader>mv :silent !pandoc -f markdown -t html -s -o %:r.html %:r.md && sleep .5 && open -a /Applications/Safari.app/Contents/MacOS/Safari %:r.html<CR>
+nnoremap <silent><leader>mv :silent !pandoc -f markdown -t html -s -o /tmp/%:r.html %:r.md && sleep .5 && open -a /Applications/Safari.app/Contents/MacOS/Safari /tmp/%:r.html<CR>
 
 "Open current markdown document as PDF in Preview
-nnoremap <silent><leader>mp :silent !pandoc -f markdown -o %:r.pdf %:r.md && open -a /Applications/Adobe\ Acrobat\ X\ Pro/Adobe\ Acrobat\ Pro.app/ %:r.pdf<CR>
+nnoremap <silent><leader>mp :silent !pandoc -f markdown -o /tmp/%:r.pdf %:r.md && open -a /Applications/Adobe\ Acrobat\ X\ Pro/Adobe\ Acrobat\ Pro.app/ /tmp/%:r.pdf<CR>
 
 "Open current markdown document as RTF in Word (blech)
-nnoremap <silent><leader>mr :silent !pandoc -f markdown -t rtf -s -o %:r.rtf %:r.md \| open -a /Applications/Microsoft\ Office\ 2011/Microsoft\ Word.app/Contents/MacOS/Microsoft\ Word %:r.rtf<CR>
+nnoremap <silent><leader>mr :silent !pandoc -f markdown -t rtf -s -o /tmp/%:r.rtf %:r.md \| open -a /Applications/Microsoft\ Office\ 2011/Microsoft\ Word.app/Contents/MacOS/Microsoft\ Word /tmp/%:r.rtf<CR>
 
 " vim-pandoc (https://github.com/vim-pandoc/vim-pandoc) kills. Not literally.
 " But it is unbearably slow unless I turn off the conditional link highlighting
