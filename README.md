@@ -1,4 +1,6 @@
-Installation of plugin as submodule:
+# test #
+
+:Installation of plugin as submodule:
 
     git clone git://github.com/nelstrom/dotvim.git ~/.vim
 

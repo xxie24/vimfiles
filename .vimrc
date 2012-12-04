@@ -119,19 +119,12 @@ syntax enable
 set background=dark
 
 "a subtle highlight for current line
-:hi CursorLine   cterm=NONE ctermbg=NONE ctermfg=white Guibg=gray13 guifg=NONE
-:hi CursorLine   cterm=NONE ctermbg=NONE ctermfg=white Guibg=gray13 guifg=NONE
+":hi CursorLine   cterm=NONE ctermbg=NONE ctermfg=white Guibg=gray13 guifg=NONE
+":hi CursorLine   cterm=NONE ctermbg=NONE ctermfg=white Guibg=gray13 guifg=NONE
 
-"a nice bright green cursor. Just like the olden days.
-:highlight Cursor cterm=NONE ctermbg=NONE guifg=black guibg=LawnGreen
+" turn that cursor up to 11!
+":set cursorline
 
-"turn that cursor up to 11!
-:set cursorline
-
-" I want candy!
-color candycode
-
-"}}}
 
 " -- EDITING {{{1
 
@@ -202,10 +195,8 @@ augroup END
 " if editing Pandoc/Markdown, set filetype, enable spell, reformat w/pandoc
 au BufNewFile,BufRead *.md setlocal filetype=pandoc 
 au BufNewFile,BufRead *.md setlocal equalprg=pandoc\ -t\ markdown\ --no-wrap
-au BufNewFile,BufRead *.md :Voom markdown
+"au BufNewFile,BufRead *.md :Voom markdown
 " Use par for (re)formatting email messages
-
-au BufNewFile,BufRead *.mail setlocal equalprg="/usr/local/bin/par -q+"
 
 " http://vim.wikia.com/wiki/Vim_as_XML_Editor
 let g:xml_syntax_folding=1
@@ -335,7 +326,7 @@ nnoremap <leader>q :wq!<cr>
 "shortcuts to some common files'
 nnoremap <leader>ev :tabe $MYVIMRC<cr>
 nnoremap <leader>es :tabe ~/scratch.md<cr>
-nnoremap <leader>eb :tabe ~/.bashrc
+nnoremap <leader>eb :tabe ~/.bashrc<cr>
 
 "And source it, baby, source it!
 nnoremap <leader>sv :so $MYVIMRC<CR>
@@ -414,9 +405,10 @@ let g:voom_tree_width=35
 " make sure voomclose kills the outline
 com! Voomclose call Voom_DeleteOutline('')
 nnoremap <leader>vo :Voom<CR>
-nnoremap <leader>vm :Voom markdown<CR>
+nnoremap <leader>vd :Voom markdown<CR>
 nnoremap <leader>vt :VoomToggle<CR>
-" }}}
+"nnoremap <leader>vdt :VoomToggle markdown<CR>
+"}}}
 
 "" -- NERDTree {{{2
 " NERDTree filesystem explorer for browsing directories...you feel me?
@@ -491,5 +483,16 @@ command! -nargs=? -range ToStraight call ToStraight(<line1>, <line2>, '<args>')
   ":%ToStraight    " convert all
   ":ToStraight     " convert current line only
   ":%ToStraight c  " convert all and confirm each 
+
+" I want candy!
+"if has('gui_running')
+"else
+  "color candycode-term
+"endif
+" a nice bright green cursor. Just like the olden days.
+:highlight Cursor ctermfg=NONE ctermbg=NONE guifg=black guibg=LawnGreen
+:highlight Cursor ctermfg=NONE ctermbg=NONE guifg=black guibg=LawnGreen
+
+au BufReadCmd   *.epub      call zip#Browse(expand("<amatch>"))
 
 " }}}
