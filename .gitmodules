@@ -100,3 +100,6 @@
 [submodule "bundle/smartput"]
 	path = bundle/smartput
 	url = https://github.com/vim-scripts/Smartput.git
+[submodule "bundle/wordnet"]
+	path = bundle/wordnet
+	url = https://github.com/fncll/wordnet.vim.git
