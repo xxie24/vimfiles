@@ -193,8 +193,8 @@ augroup filetype_vim
 augroup END
 
 " if editing Pandoc/Markdown, set filetype, enable spell, reformat w/pandoc
-au BufNewFile,BufRead *.md setlocal filetype=pandoc 
-au BufNewFile,BufRead *.md setlocal equalprg=pandoc\ -t\ markdown\ --no-wrap
+au BufNewFile,BufRead *.md,*.mtxt setlocal filetype=pandoc 
+au BufNewFile,BufRead *.md,*.mtxt setlocal equalprg=pandoc\ -t\ markdown\ --no-wrap
 "au BufNewFile,BufRead *.md :Voom markdown
 " Use par for (re)formatting email messages
 
@@ -364,6 +364,10 @@ let tlist_make_settings  = 'make;m:makros;t:targets'
 
 " -- PLUGINS AND PLUGIN SETTINGS {{{1
 
+"" -- SnipMate {{{2
+let g:snips_author='Chris Lott'
+" }}}
+
 "" -- EasyMotion {{{2
 " EasyMotion will let you get around faster than the prom queen did the
 " football team 
@@ -494,5 +498,24 @@ command! -nargs=? -range ToStraight call ToStraight(<line1>, <line2>, '<args>')
 :highlight Cursor ctermfg=NONE ctermbg=NONE guifg=black guibg=LawnGreen
 
 au BufReadCmd   *.epub      call zip#Browse(expand("<amatch>"))
+
+let dnfile = strftime("%Y") . ".md"
+let dncm = 'edit '.dnfile
+" nmap <leader>dn :execute 'edit!' fnameescape(dnfile)
+"nnoremap <leader>dn execute dncm
+nnoremap <leader>dn :execute 'e '.fnameescape(dnfile)<cr>
+
+function! WW()
+  :set showtabline=0
+  :set noshowmode
+  :set laststatus=0
+  :set noruler
+  :set noshowcmd
+  :call VimWriteRoom()
+endfunction
+
+nnoremap WW :call WW()<CR>
+
+"au BufNewFile,BufEnter,BufRead pentadactyl.txt call WW()
 
 " }}}
