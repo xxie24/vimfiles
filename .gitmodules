@@ -106,3 +106,6 @@
 [submodule "bundle/vimroom"]
 	path = bundle/vimroom
 	url = https://github.com/mikewest/vimroom.git
+[submodule "bundle/vim-writeroom"]
+	path = bundle/vim-writeroom
+	url = https://github.com/fncll/vim-writeroom.git

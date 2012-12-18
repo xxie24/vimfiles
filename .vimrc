@@ -371,8 +371,8 @@ let g:snips_author='Chris Lott'
 "" -- EasyMotion {{{2
 " EasyMotion will let you get around faster than the prom queen did the
 " football team 
-let g:EasyMotion_mapping_f = 'f'
-let g:EasyMotion_mapping_F = 'F'
+let g:EasyMotion_mapping_f = '<Leader>ff'
+let g:EasyMotion_mapping_F = '<Leader>F'
 let g:EasyMotion_mapping_w = '<Leader><Leader>fw'
 let g:EasyMotion_mapping_b = '<Leader><Leader>fb'
 let g:EasyMotion_mapping_e = '<Leader><Leader>fe'
@@ -417,12 +417,14 @@ nnoremap <leader>vt :VoomToggle<CR>
 "" -- NERDTree {{{2
 " NERDTree filesystem explorer for browsing directories...you feel me?
 " [https://github.com/scrooloose/nerdtree]
+let NERDTreeBookmarksFile=$HOME.'/.vim/.NERDTreeBookmarks'
 let NERDTreeDirArrows=1
 let NERDTreeShowBookmarks=1
 let NERDChristmasTree=1
 let NERDTreeHighlightCursorline=1
 let NERDTreeWinSize=31
 map <leader>no :NERDTree<space>
+map <leader>nd :NERDTreeCWD<cr>
 map <leader>nb :NERDTreeFromBookmark<space>
 map <leader>nt :execute 'NERDTreeToggle ' . getcwd()<CR>
 map <leader>nf :NERDTreeFind<CR>
@@ -516,6 +518,10 @@ endfunction
 
 nnoremap WW :call WW()<CR>
 
-"au BufNewFile,BufEnter,BufRead pentadactyl.txt call WW()
+set showtabline=2
+au BufNewFile,BufEnter,BufRead pentadactyl.txt setlocal filetype=pandoc 
+au BufNewFile,BufEnter,BufRead pentadactyl.txt setlocal equalprg=pandoc\ -t\ markdown\ --no-wrap
 
+nmap <leader>tor :%! formd -r<CR>
+nmap <leader>toi :%! formd -i<CR>
 " }}}
