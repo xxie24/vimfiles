@@ -401,6 +401,7 @@ let g:ctrlp_working_path_mode = 'ra'
 let g:ctrlp_open_new_file = 't'
 let g:ctrlp_arg_map = 1
 let g:ctrlp_match_window_reversed = 0
+let g:ctrlp_show_hidden = 1
 " }}}
 
 "" -- Voom {{{2
@@ -524,4 +525,5 @@ au BufNewFile,BufEnter,BufRead pentadactyl.txt setlocal equalprg=pandoc\ -t\ mar
 
 nmap <leader>tor :%! formd -r<CR>
 nmap <leader>toi :%! formd -i<CR>
+
 " }}}
