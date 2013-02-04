@@ -56,10 +56,6 @@
 [submodule "bundle/vim-latex"]
 	path = bundle/vim-latex
 	url = https://github.com/jcf/vim-latex.git
-[submodule "bundle/vim-pandoc"]
-	path = bundle/vim-pandoc
-	url = https://github.com/vim-pandoc/vim-pandoc.git
-    ignore=dirty
 [submodule "bundle/snipmate"]
 	path = bundle/snipmate
 	url = git://github.com/garbas/vim-snipmate.git
@@ -87,9 +83,6 @@
 [submodule "bundle/vim-signature"]
 	path = bundle/vim-signature
 	url = https://github.com/kshenoy/vim-signature.git
-[submodule "bundle/voom"]
-	path = bundle/voom
-	url = https://github.com/zhaocai/VOoM.git
 [submodule "bundle/colorschemes"]
 	path = bundle/colorschemes
   url = git@github.com:flazz/vim-colorschemes.git
