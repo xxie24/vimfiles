@@ -42,7 +42,7 @@ set viminfo=<500,%,'2000,/500,"500,@500,f1,n~/.viminfo
 set hidden
 
 "and auto save them buffers when I leave them
-au BufLeave,FocusLost * silent! :wall
+"au BufLeave,FocusLost * silent! :wall
 
 "automatically update a file if something changes it from outside vim
 set autoread
@@ -497,8 +497,8 @@ command! -nargs=? -range ToStraight call ToStraight(<line1>, <line2>, '<args>')
   "color candycode-term
 "endif
 " a nice bright green cursor. Just like the olden days.
-:highlight Cursor ctermfg=NONE ctermbg=NONE guifg=black guibg=LawnGreen
-:highlight Cursor ctermfg=NONE ctermbg=NONE guifg=black guibg=LawnGreen
+":highlight Cursor ctermfg=NONE ctermbg=NONE guifg=black guibg=LawnGreen
+":highlight Cursor ctermfg=NONE ctermbg=NONE guifg=black guibg=LawnGreen
 
 au BufReadCmd   *.epub      call zip#Browse(expand("<amatch>"))
 
