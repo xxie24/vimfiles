@@ -75,10 +75,6 @@
 [submodule "bundle/l9"]
 	path = bundle/l9
 	url = https://github.com/vim-scripts/L9.git
-[submodule "bundle/gundo"]
-	path = bundle/gundo
-    url = https://github.com/sjl/gundo.vim.git
-    ignore = dirty
 [submodule "bundle/vim-latex-suite"]
 	path = bundle/vim-latex-suite
 	url = git@github.com:gerw/vim-latex-suite.git
