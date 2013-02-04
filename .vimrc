@@ -42,7 +42,7 @@ set viminfo=<500,%,'2000,/500,"500,@500,f1,n~/.viminfo
 set hidden
 
 "and auto save them buffers when I leave them
-"au BufLeave,FocusLost * silent! :wall
+au BufLeave,FocusLost * silent! :wall
 
 "automatically update a file if something changes it from outside vim
 set autoread
