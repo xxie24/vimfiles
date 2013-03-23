@@ -1,4 +1,4 @@
-"" -- PRELIMINARIES {{{1
+" -- PRELIMINARIES {{{1
 
 " This isn't Vi, sucka! So no need to pretend.
 set nocompatible
@@ -17,7 +17,9 @@ source ~/.vim/vimrc/myfuncs.vim
 let g:pathogen_disabled = []
 "example syntax:
 "call add(g:pathogen_disabled, 'supertab')
-call add(g:pathogen_disabled, 'vim-signature')
+call add(g:pathogen_disabled, 'nerdtree')
+call add(g:pathogen_disabled, 'vimwiki')
+call add(g:pathogen_disabled, 'delimitmate')
 
 "using pathogen to manage plugins... waaay easier than doing it manually
 "[http://www.vim.org/scripts/script.php?script_id=23321] these functions read
@@ -117,6 +119,7 @@ syntax enable
 
 "I don't care what "they" say, dark backgrounds are easier on the screen eyes
 set background=dark
+colorscheme badwolf
 
 "a subtle highlight for current line
 ":hi CursorLine   cterm=NONE ctermbg=NONE ctermfg=white Guibg=gray13 guifg=NONE
@@ -196,7 +199,6 @@ augroup END
 au BufNewFile,BufRead *.md,*.mtxt setlocal filetype=pandoc 
 au BufNewFile,BufRead *.md,*.mtxt setlocal equalprg=pandoc\ -t\ markdown\ --no-wrap
 "au BufNewFile,BufRead *.md :Voom markdown
-" Use par for (re)formatting email messages
 
 " http://vim.wikia.com/wiki/Vim_as_XML_Editor
 let g:xml_syntax_folding=1
@@ -207,18 +209,29 @@ au FileType xml normal zR
 
 " -- GENERAL KEYBOARD SHORTCUTS, REMAPS & ABBREVS {{{1
 
-" arrow keys do nothing in insert mode (no bad habits for me except beer,
-" donuts and bacon
-imap <up> <nop>
-imap <down> <nop>
-imap <left> <nop>
-imap <right> <nop>
+" move line by line with long lines
+noremap j gj
+noremap k gk
 
-" move between windows
-nnoremap <C-J> <C-W>j
-nnoremap <C-K> <C-W>k
-nnoremap <C-H> <C-W>h
-nnoremap <C-L> <C-W>l
+" arrow keys do nothing (no bad habits for me except beer donuts and bacon)
+nnoremap <Up> <Esc>
+vnoremap <Up> <NOP>
+inoremap <Up> <NOP>
+nnoremap <Down> <Esc>
+vnoremap <Down> <NOP>
+inoremap <Down> <NOP>
+nnoremap <Left> <Esc>
+vnoremap <Left> <NOP>
+inoremap <Left> <NOP>
+nnoremap <Right> <Esc>
+vnoremap <Right> <NOP>
+inoremap <Right> <NOP>
+
+"arrow keys move between windows
+"nnoremap <C-J> <C-W>j
+"nnoremap <C-K> <C-W>k
+"nnoremap <C-H> <C-W>h
+"nnoremap <C-L> <C-W>l
 
 "disable use of the mouse...I don't need no steenkin mouse
 set mouse=
@@ -226,6 +239,8 @@ set mouse=
 "use a better key for leader commands (the ones that play 'Follow the Leader')
 let mapleader = ","
 let maplocalleader = ","
+
+nnoremap <Leader>x "_d
 
 "use jk to exit insert mode...no more reaching up for ESC key
 "thanks Steve Losh http://learnvimscriptthehardway.stevelosh.com/chapters/10.html
@@ -235,21 +250,13 @@ inoremap jk <ESC>
 noremap gg gg^
 noremap G G$
 
-"" Trying to decide if it's good or bad to not get the real shortcuts 
-"" under my fingers
-"use Arrow keys to move between windows
-nmap <Up> <C-W>k
-nmap <Down> <C-W>j
-nmap <Left> <C-W>h
-nmap <Right> <C-W>l
-
 " press * or # to search for the current selection
 vnoremap <silent> * :call VisualSearch('f')<CR>
 vnoremap <silent> # :call VisualSearch('b')<CR>
 
 " toggle between paste and normal mode
-nmap <C-\\> <ESC>:call TogglePaste()<CR>
-imap <C-\\> <ESC>:call TogglePaste()<CR>
+nmap <leader>P <ESC>:call TogglePaste()<CR>
+imap <leader>P <ESC>:call TogglePaste()<CR>
 
 " show word count of current buffer 
 noremap <leader>wc :echo WordCount()<CR>
@@ -312,6 +319,8 @@ let g:SuperTabDefaultCompletionType = "context"
 " -- FILE OPERATIONS {{{1
 
 " Always change to the directory of the current file
+nnoremap ,cd :cd %:p:h<CR>:pwd<CR>
+
 au BufEnter * lcd %:p:h
 
 "write the current file, no questions asked
@@ -331,9 +340,11 @@ nnoremap <leader>eb :tabe ~/.bashrc<cr>
 "And source it, baby, source it!
 nnoremap <leader>sv :so $MYVIMRC<CR>
 
+
+
 " :TOhtml configuration
-let use_xhtml = 1
 let html_use_css = 1
+let use_xhtml = 1
 let html_ignore_folding = 1
 
 " }}}
@@ -371,10 +382,12 @@ let g:snips_author='Chris Lott'
 "" -- EasyMotion {{{2
 " EasyMotion will let you get around faster than the prom queen did the
 " football team 
-let g:EasyMotion_mapping_f = '<Leader>ff'
-let g:EasyMotion_mapping_F = '<Leader>F'
+"let g:EasyMotion_mapping_f = 'f'
+"let g:EasyMotion_mapping_F = 'F'
+let g:EasyMotion_mapping_f = '<Leader><Leader>f'
+let g:EasyMotion_mapping_F = '<Leader><Leader>F'
 let g:EasyMotion_mapping_w = '<Leader><Leader>fw'
-let g:EasyMotion_mapping_b = '<Leader><Leader>fb'
+let g:EasyMotion_mapping_b = '<Leader><Leader>Fb'
 let g:EasyMotion_mapping_e = '<Leader><Leader>fe'
 let g:EasyMotion_mapping_ge = '<Leader><Leader>Fe'
 let g:EasyMotion_mapping_j = '<Leader><Leader>fj'
@@ -386,7 +399,7 @@ let g:EasyMotion_mapping_N = '<Leader><Leader>fp'
 "" -- CtrlP {{{2
 " CtrlP [https://github.com/kien/ctrlp.vim] seems to be the best buffer
 " switching, file finding, most-recently used selecting utility around.
-"nnoremap <leader>pf :CtrlP<CR>
+nnoremap <leader>pf :CtrlP<CR>
 nnoremap <leader>pb :CtrlPBuffer<CR>
 nnoremap <leader>pr :CtrlPMRUFiles<CR>
 nnoremap <leader>pm :CtrlPBookmarkDir<CR>
@@ -463,6 +476,11 @@ autocmd cursorhold,bufwritepost * unlet! b:tab_warning
 
 " }}}
 
+" -- VIMWIKI EVAL {{{1
+
+" let g:vimwiki_list = [{'path': '~/db/prod/vimwiki/'}]
+
+"  }}}
 " -- TESTING, PENDING DELETION, UNCATEGORIZED {{{1
 
 let g:smartput = 0
@@ -526,4 +544,5 @@ au BufNewFile,BufEnter,BufRead pentadactyl.txt setlocal equalprg=pandoc\ -t\ mar
 nmap <leader>tor :%! formd -r<CR>
 nmap <leader>toi :%! formd -i<CR>
 
+nnoremap <CR> :noh<CR>
 " }}}
