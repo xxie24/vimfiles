@@ -72,13 +72,13 @@ set ttyfast
 set undofile
 
 "but I don't want undofiles all over the place
-set undodir=$HOME/.vim/.undofiles
+set undodir=$HOME/tmp/vimtmp/undofiles
 
 "make backup files in this directory (so they're not all over)
-set backupdir=$HOME/.vim/.backups
+set backupdir=$HOME/tmp/vimtmp/backupfiles
 
 "save swap files to a specific directory (less mess!)
-set directory=$HOME/.vim/.backups/swp
+set directory=$HOME/tmp/vimtmp/swapfiles
 
 "vim can be weird... I'm still getting backups, but only when I close a file
 set nowritebackup
