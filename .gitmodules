@@ -18,10 +18,6 @@ ignore = dirty
 	path = bundle/matchit
 	url = https://github.com/tsaleh/vim-matchit.git
 ignore = dirty
-[submodule "bundle/mru"]
-	path = bundle/mru
-	url = https://github.com/vim-scripts/mru.vim.git
-ignore = dirty
 [submodule "bundle/nerdcommenter"]
 	path = bundle/nerdcommenter
 	url = https://github.com/scrooloose/nerdcommenter.git
@@ -58,10 +54,6 @@ ignore = dirty
 	path = bundle/easymotion
 	url = git://github.com/Lokaltog/vim-easymotion.git
 ignore = dirty
-[submodule "bundle/vim-latex"]
-	path = bundle/vim-latex
-	url = https://github.com/jcf/vim-latex.git
-ignore = dirty
 [submodule "bundle/snipmate"]
 	path = bundle/snipmate
 	url = git://github.com/garbas/vim-snipmate.git
@@ -78,21 +70,9 @@ ignore = dirty
 	path = bundle/zoomwin
 	url = https://github.com/vim-scripts/ZoomWin.git
 ignore = dirty
-[submodule "bundle/l9"]
-	path = bundle/l9
-	url = https://github.com/vim-scripts/L9.git
-ignore = dirty
 [submodule "bundle/vim-latex-suite"]
 	path = bundle/vim-latex-suite
 	url = git@github.com:gerw/vim-latex-suite.git
-ignore = dirty
-[submodule "bundle/ultisnips"]
-	path = bundle/ultisnips
-	url = https://github.com/SirVer/ultisnips
-ignore = dirty
-[submodule "plugin/shuffle"]
-	path = plugin/shuffle
-	url = https://github.com/vim-scripts/shuffle.vim.git
 ignore = dirty
 [submodule "bundle/vim-signature"]
 	path = bundle/vim-signature
@@ -105,10 +85,6 @@ ignore = dirty
 [submodule "bundle/wordnet"]
 	path = bundle/wordnet
 	url = https://github.com/fncll/wordnet.vim.git
-ignore = dirty
-[submodule "bundle/vimroom"]
-	path = bundle/vimroom
-	url = https://github.com/mikewest/vimroom.git
 ignore = dirty
 [submodule "bundle/vim-writeroom"]
 	path = bundle/vim-writeroom
