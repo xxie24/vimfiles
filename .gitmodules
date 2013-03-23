@@ -5,18 +5,12 @@
 	path = bundle/ctrlp
 	url = https://github.com/kien/ctrlp.vim.git
     ignore = dirty
-[submodule "bundle/delimitmate"]
-	path = bundle/delimitmate
-	url = https://github.com/Raimondi/delimitMate.git
 [submodule "bundle/foldsearch"]
 	path = bundle/foldsearch
 	url = https://github.com/embear/vim-foldsearch.git
 [submodule "bundle/languagetool"]
 	path = bundle/languagetool
 	url = https://github.com/vim-scripts/LanguageTool.git
-[submodule "bundle/nerdtree"]
-	path = bundle/nerdtree
-	url = https://github.com/scrooloose/nerdtree.git
 [submodule "bundle/matchit"]
 	path = bundle/matchit
 	url = https://github.com/tsaleh/vim-matchit.git
@@ -98,3 +92,15 @@
 [submodule "bundle/vim-pandoc"]
 	path = bundle/vim-pandoc
 	url = https://github.com/vim-pandoc/vim-pandoc.git
+[submodule "bundle/quicktask"]
+	path = bundle/quicktask
+	url = https://github.com/aaronbieber/quicktask.git
+[submodule "bundle/taskpaper"]
+	path = bundle/taskpaper
+	url = https://github.com/davidoc/taskpaper.vim.git
+[submodule "bundle/vimwiki"]
+	path = bundle/vimwiki
+	url = https://github.com/vim-scripts/vimwiki.git
+[submodule "bundle/align"]
+	path = bundle/align
+	url = https://github.com/vim-scripts/Align.git
