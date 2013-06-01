@@ -1,7 +1,8 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =5
+let g:netrw_dirhist_cnt =6
 let g:netrw_dirhist_1='/Users/chris/Dropbox/appsupport/vim/.vim/.git'
 let g:netrw_dirhist_2='/Users/chris/.pentadactyl'
 let g:netrw_dirhist_3='/Users/chris/Dropbox/appsupport/gitprojects/vimfiles/.git'
 let g:netrw_dirhist_4='/Users/chris/src'
 let g:netrw_dirhist_5='/Users/chris/src/newdir'
+let g:netrw_dirhist_6='/Users/chris/.mutt/muttrc'

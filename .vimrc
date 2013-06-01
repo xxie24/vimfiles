@@ -20,6 +20,7 @@ let g:pathogen_disabled = []
 call add(g:pathogen_disabled, 'nerdtree')
 call add(g:pathogen_disabled, 'vimwiki')
 call add(g:pathogen_disabled, 'delimitmate')
+call add(g:pathogen_disabled, 'smartput')
 
 "using pathogen to manage plugins... waaay easier than doing it manually
 "[http://www.vim.org/scripts/script.php?script_id=23321] these functions read
@@ -240,6 +241,7 @@ set mouse=
 let mapleader = ","
 let maplocalleader = ","
 
+" delete without placing into register/clipboard
 nnoremap <Leader>x "_d
 
 "use jk to exit insert mode...no more reaching up for ESC key
@@ -483,10 +485,17 @@ autocmd cursorhold,bufwritepost * unlet! b:tab_warning
 "  }}}
 " -- TESTING, PENDING DELETION, UNCATEGORIZED {{{1
 
-let g:smartput = 0
+" Automatically set a mark 'S' when searching to easily return 
+" to location where I started searching with `S
+nnoremap / mz/
+nnoremap ? mz?
 
 " Convert curly quotes to straight.
 " Any argument causes substitute to confirm changes.
+":%ToStraight    " convert all
+":ToStraight     " convert current line only
+":%ToStraight c  " convert all and confirm each 
+
 function! ToStraight(line1, line2, args)
   let flags = 'eg'
   let range = a:line1 . ',' . a:line2
@@ -504,28 +513,13 @@ function! ToStraight(line1, line2, args)
 endfunction
 command! -nargs=? -range ToStraight call ToStraight(<line1>, <line2>, '<args>') 
 
-"Usage
-  ":%ToStraight    " convert all
-  ":ToStraight     " convert current line only
-  ":%ToStraight c  " convert all and confirm each 
-
-" I want candy!
-"if has('gui_running')
-"else
-  "color candycode-term
-"endif
-" a nice bright green cursor. Just like the olden days.
-":highlight Cursor ctermfg=NONE ctermbg=NONE guifg=black guibg=LawnGreen
-":highlight Cursor ctermfg=NONE ctermbg=NONE guifg=black guibg=LawnGreen
-
 au BufReadCmd   *.epub      call zip#Browse(expand("<amatch>"))
 
-let dnfile = strftime("%Y") . ".md"
-let dncm = 'edit '.dnfile
-" nmap <leader>dn :execute 'edit!' fnameescape(dnfile)
-"nnoremap <leader>dn execute dncm
-nnoremap <leader>dn :execute 'e '.fnameescape(dnfile)<cr>
+"let dnfile = strftime("%Y") . ".md"
+"let dncm = 'edit '.dnfile
+"nnoremap <leader>dn :execute 'e '.fnameescape(dnfile)<cr>
 
+" Use WriteRoom for distraction free composition
 function! WW()
   :set showtabline=0
   :set noshowmode
@@ -537,12 +531,17 @@ endfunction
 
 nnoremap WW :call WW()<CR>
 
+" show tabline even when there is only one tab open
 set showtabline=2
+
+
 au BufNewFile,BufEnter,BufRead pentadactyl.txt setlocal filetype=pandoc 
 au BufNewFile,BufEnter,BufRead pentadactyl.txt setlocal equalprg=pandoc\ -t\ markdown\ --no-wrap
 
-nmap <leader>tor :%! formd -r<CR>
-nmap <leader>toi :%! formd -i<CR>
+" Use [formd](http://drbunsen.github.io/formd/) to convert
+" markdown links to and from reference and inline styles
+nmap <leader>tor :%! ~/bin/formd -r<CR>
+nmap <leader>toi :%! ~/bin/formd -i<CR>
 
-nnoremap <CR> :noh<CR>
 " }}}
+" two, one.

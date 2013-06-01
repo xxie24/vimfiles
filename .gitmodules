@@ -30,10 +30,6 @@ ignore = dirty
 	path = bundle/powerline
 	url = https://github.com/Lokaltog/vim-powerline.git
 ignore = dirty
-[submodule "bundle/snipmate-snippets"]
-	path = bundle/snipmate-snippets
-	url = https://github.com/honza/snipmate-snippets.git
-ignore = dirty
 [submodule "bundle/supertab"]
 	path = bundle/supertab
 	url = https://github.com/ervandew/supertab.git
@@ -115,3 +111,6 @@ ignore = dirty
   url = https://github.com/vim-scripts/Align.git
 ignore = dirty
 
+[submodule "bundle/vim-snippets"]
+	path = bundle/vim-snippets
+	url = https://github.com/honza/vim-snippets.git
