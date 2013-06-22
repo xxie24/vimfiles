@@ -114,3 +114,6 @@ ignore = dirty
 [submodule "bundle/vim-snippets"]
 	path = bundle/vim-snippets
 	url = https://github.com/honza/vim-snippets.git
+[submodule "bundle/hemisu"]
+	path = bundle/hemisu
+	url = https://github.com/noahfrederick/Hemisu.git

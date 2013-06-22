@@ -21,6 +21,7 @@ call add(g:pathogen_disabled, 'nerdtree')
 call add(g:pathogen_disabled, 'vimwiki')
 call add(g:pathogen_disabled, 'delimitmate')
 call add(g:pathogen_disabled, 'smartput')
+"call add(g:pathogen_disabled, 'vim-signature')
 
 "using pathogen to manage plugins... waaay easier than doing it manually
 "[http://www.vim.org/scripts/script.php?script_id=23321] these functions read
@@ -534,7 +535,6 @@ nnoremap WW :call WW()<CR>
 " show tabline even when there is only one tab open
 set showtabline=2
 
-
 au BufNewFile,BufEnter,BufRead pentadactyl.txt setlocal filetype=pandoc 
 au BufNewFile,BufEnter,BufRead pentadactyl.txt setlocal equalprg=pandoc\ -t\ markdown\ --no-wrap
 
@@ -542,6 +542,9 @@ au BufNewFile,BufEnter,BufRead pentadactyl.txt setlocal equalprg=pandoc\ -t\ mar
 " markdown links to and from reference and inline styles
 nmap <leader>tor :%! ~/bin/formd -r<CR>
 nmap <leader>toi :%! ~/bin/formd -i<CR>
+
+" Fix so-called smart quotes and typographic symbols
+map ,fq :%s/“/"/e<enter>:%s/”/"/e<enter>:%s/‘/'/e<enter>:%s/’/'/e<enter>:%s/–/--/e<enter>:%s/—/---/e<enter>:%s/…/.../e<enter>
 
 " }}}
 " two, one.
