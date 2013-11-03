@@ -107,4 +107,7 @@ ignore = dirty
 	url = https://github.com/altercation/vim-colors-solarized.git
 [submodule "bundle/ragtag"]
 	path = bundle/ragtag
-	url = https://github.com/tpope/vim-ragtag.git
+    url = https://github.com/tpope/vim-ragtag.git
+[submodule "bundle/csv"]
+    path = bundle/csv
+    url = https://github.com/chrisbra/csv.vim.git
