@@ -8,43 +8,14 @@ set nocompatible
 set clipboard=unnamed
 set history=20
 
+" Set line-ending types
+set fileformats=unix,mac,dos
+
 "" Pathogen is a great way to manage plugins, but sometimes I need
 "" temporarily disable a plugin, which I do below.
-" To disable a plugin, add it's bundle name to the following list
+" To disable a plugin, add it's bundle name to the following list. eg
+" call add(g:pathogen_disabled, 'abolish')
 let g:pathogen_disabled = []
-
-"call add(g:pathogen_disabled, 'abolish')
-"call add(g:pathogen_disabled, 'addon-mw-utils')
-"call add(g:pathogen_disabled, 'airline')
-"call add(g:pathogen_disabled, 'align')
-"call add(g:pathogen_disabled, 'csv')
-"call add(g:pathogen_disabled, 'ctrlp')
-"call add(g:pathogen_disabled, 'easymotion')
-"call add(g:pathogen_disabled, 'foldsearch')
-"call add(g:pathogen_disabled, 'gundo')
-"call add(g:pathogen_disabled, 'languagetool')
-"call add(g:pathogen_disabled, 'matchit')
-"call add(g:pathogen_disabled, 'nerdcommenter')
-"call add(g:pathogen_disabled, 'netrw')
-"call add(g:pathogen_disabled, 'ragtag')
-"call add(g:pathogen_disabled, 'quicktask')
-"call add(g:pathogen_disabled, 'scratch')
-"call add(g:pathogen_disabled, 'smartput')
-"call add(g:pathogen_disabled, 'snipmate')
-"call add(g:pathogen_disabled, 'supertab')
-"call add(g:pathogen_disabled, 'surround')
-"call add(g:pathogen_disabled, 'taglist')
-"call add(g:pathogen_disabled, 'taskpaper')
-"call add(g:pathogen_disabled, 'tlib-vim')
-"call add(g:pathogen_disabled, 'unite')
-"call add(g:pathogen_disabled, 'vim-pandoc')
-"call add(g:pathogen_disabled, 'vim-signature')
-"call add(g:pathogen_disabled, 'vim-snippets')
-"call add(g:pathogen_disabled, 'voom')
-"call add(g:pathogen_disabled, 'unimpaired')
-"call add(g:pathogen_disabled, 'wordnet')
-"call add(g:pathogen_disabled, 'yankring')
-"call add(g:pathogen_disabled, 'zoomwin')
 
 "using pathogen to manage plugins... waaay easier than doing it manually
 "[http://www.vim.org/scripts/script.php?script_id=23321] these functions read
@@ -52,8 +23,6 @@ let g:pathogen_disabled = []
 "usually just run it from the command line with :Helptags
 call pathogen#infect()
 call pathogen#helptags()
-
-"" Vim will have the memory of an *elephant* I tell you!
 
 "keep a lot of history... good for leaky memories like the one in my head
 set history=1000
@@ -74,8 +43,8 @@ au BufLeave,FocusLost * silent! :wall
 "automatically update a file if something changes it from outside vim
 set autoread
 
-"highlight those search terms. why not?
-"set hlsearch
+" highlight search terms
+set hlsearch
 
 "and highlight incrementally as you search
 set incsearch
@@ -97,13 +66,13 @@ set ttyfast
 set undofile
 
 "but I don't want undofiles all over the place
-set undodir=$HOME/tmp/vimtmp/undofiles
+set undodir=$HOME/tmp
 
 "make backup files in this directory (so they're not all over)
-set backupdir=$HOME/tmp/vimtmp/backupfiles
+set backupdir=$HOME/tmp
 
 "save swap files to a specific directory (less mess!)
-set directory=$HOME/tmp/vimtmp/swapfiles
+set directory=$HOME/tmp
 
 "vim can be weird... I'm still getting backups, but only when I close a file
 set nowritebackup
@@ -211,9 +180,7 @@ augroup filetype_vim
 augroup END
 
 " if editing Pandoc/Markdown, set filetype, enable spell, reformat w/pandoc
-au BufNewFile,BufRead *.md,*.mtxt setlocal filetype=pandoc|setlocal equalprg=pandoc\ -t\ markdown\ --no-wrap|setlocal shiftwidth=4|set spell
-
-"au BufNewFile,BufRead *.md :Voom markdown
+au BufNewFile,BufRead *.md setlocal filetype=pandoc|setlocal equalprg=pandoc\ -t\ markdown\ --no-wrap|setlocal shiftwidth=4|set spell
 
 " http://vim.wikia.com/wiki/Vim_as_XML_Editor
 let g:xml_syntax_folding=1
@@ -245,12 +212,6 @@ inoremap <Left> <NOP>
 nnoremap <Right> <Esc>
 vnoremap <Right> <NOP>
 inoremap <Right> <NOP>
-
-"arrow keys move between windows
-"nnoremap <C-J> <C-W>j
-"nnoremap <C-K> <C-W>k
-"nnoremap <C-H> <C-W>h
-"nnoremap <C-L> <C-W>l
 
 "disable use of the mouse...I don't need no steenkin mouse
 set mouse=
@@ -286,41 +247,17 @@ noremap <leader>wc :echo WordCount()<CR>
 nnoremap <leader><space> :noh<cr>
 
 " Bash like keys for the command line
-cnoremap <C-A>      <Home>
-cnoremap <C-E>      <End>
-cnoremap <C-K>      <C-U>
+cnoremap <C-A> <Home>
+cnoremap <C-E> <End>
+cnoremap <C-K> <C-U>
 cnoremap <C-P> <Up>
 cnoremap <C-N> <Down>
 
-
-
-
-" If Vim is compiled with relative numbering, use F9
-" to switch between relative, none, and standard numbering
-if exists('+relativenumber')
- nnoremap <expr> <F9> CycleLNum()
- xnoremap <expr> <F9> CycleLNum()
- onoremap <expr> <F9> CycleLNum()
-endif
-
 nmap <silent> <leader>sp :set spell!<CR>
+
 " }}}
 
 " -- MARKDOWN / PANDOC WORK {{{1
-
-"(pre)view current file in Brett Terpstra's awesome Marked markdown viewer see
-"http://markedapp.com/
-
-nnoremap <leader>md :write<CR><bar>:silent !open -a Marked.app '%:p'<CR>
-
-" View current Pandoc file in Safari (which is smart enough to reuse tabs)
-nnoremap <silent><leader>mv :silent !pandoc -f markdown -t html -s -o /tmp/%:r.html %:r.md && sleep .5 && open -a /Applications/Safari.app/Contents/MacOS/Safari /tmp/%:r.html<CR>
-
-"Open current markdown document as PDF in Preview
-nnoremap <silent><leader>mp :silent !pandoc -f markdown -o /tmp/%:r.pdf %:r.md && open -a /Applications/Adobe\ Acrobat\ X\ Pro/Adobe\ Acrobat\ Pro.app/ /tmp/%:r.pdf<CR>
-
-"Open current markdown document as RTF in Word (blech)
-nnoremap <silent><leader>mr :silent !pandoc -f markdown -t rtf -s -o /tmp/%:r.rtf %:r.md \| open -a /Applications/Microsoft\ Office\ 2011/Microsoft\ Word.app/Contents/MacOS/Microsoft\ Word /tmp/%:r.rtf<CR>
 
 " vim-pandoc (https://github.com/vim-pandoc/vim-pandoc) kills. Not literally.
 " But it is unbearably slow unless I turn off the conditional link highlighting
@@ -352,7 +289,7 @@ nnoremap <leader>q :wq!<cr>
 
 "shortcuts to some common files'
 nnoremap <leader>ev :tabe $MYVIMRC<cr>
-nnoremap <leader>es :tabe ~/scratch.md<cr>
+nnoremap <leader>es :tabe ~/tmp/scratch.md<cr>
 nnoremap <leader>eb :tabe ~/.bashrc<cr>
 
 " :TOhtml configuration
@@ -379,8 +316,6 @@ map ,sq :%Subvert/{“,”,‘,’,–,—,…}/{\",\",',',--,---,...}/g<CR>
 "" -- EasyMotion {{{2
 " EasyMotion will let you get around faster than the prom queen did the
 " football team
-"let g:EasyMotion_mapping_f = 'f'
-"let g:EasyMotion_mapping_F = 'F'
 let g:EasyMotion_mapping_f = '<Leader><Leader>f'
 let g:EasyMotion_mapping_F = '<Leader><Leader>F'
 let g:EasyMotion_mapping_w = '<Leader><Leader>w'
@@ -404,9 +339,6 @@ nnoremap <leader>pa :CtrlPMixed<CR>
 nnoremap <leader>pb :CtrlPBuffer<CR>
 nnoremap <leader>pr :CtrlPMRUFiles<CR>
 nnoremap <leader>pm :CtrlPBookmarkDir<CR>
-
-"let g:ctrlp_map = '<leader>p'
-"let g:ctrlp_cmd = 'CtrlPMixed'
 
 let g:ctrlp_use_caching = 1
 let g:ctrlp_clear_cache_on_exit = 0
@@ -585,8 +517,17 @@ endfunction
 
 " -- REMOVED BUT REMEMBERED. RIP. {{{1
 
-"Replaced with [or ]or or cor from Unimpaired plugin
-"" function to cycle between normal, relative, and no line numbering
+" "Replaced with [or ]or or cor from Unimpaired plugin
+
+" If Vim is compiled with relative numbering, use F9
+" to switch between relative, none, and standard numbering
+if exists('+relativenumber')
+ nnoremap <expr> <F9> CycleLNum()
+ xnoremap <expr> <F9> CycleLNum()
+ onoremap <expr> <F9> CycleLNum()
+endif
+
+" function to cycle between normal, relative, and no line numbering
  "func! CycleLNum()
    "if &l:rnu
      "setlocal nu
@@ -718,3 +659,21 @@ endfunction
 let os=GetRunningOS()
 " }}}
 
+" -- OS X Specific {{{1
+
+if os == "unix"
+"(pre)view current file in Brett Terpstra's awesome Marked markdown viewer see
+"http://markedapp.com/
+nnoremap <leader>md :write<CR><bar>:silent !open -a Marked.app '%:p'<CR>
+
+" View current Pandoc file in Safari (which is smart enough to reuse tabs)
+nnoremap <silent><leader>mv :silent !pandoc -f markdown -t html -s -o /tmp/%:r.html %:r.md && sleep .5 && open -a /Applications/Safari.app/Contents/MacOS/Safari /tmp/%:r.html<CR>
+
+"Open current markdown document as PDF in Preview
+nnoremap <silent><leader>mp :silent !pandoc -f markdown -o /tmp/%:r.pdf %:r.md && open -a /Applications/Adobe\ Acrobat\ X\ Pro/Adobe\ Acrobat\ Pro.app/ /tmp/%:r.pdf<CR>
+
+"Open current markdown document as RTF in Word (blech)
+nnoremap <silent><leader>mr :silent !pandoc -f markdown -t rtf -s -o /tmp/%:r.rtf %:r.md \| open -a /Applications/Microsoft\ Office\ 2011/Microsoft\ Word.app/Contents/MacOS/Microsoft\ Word /tmp/%:r.rtf<CR>
+endif
+
+" }}}

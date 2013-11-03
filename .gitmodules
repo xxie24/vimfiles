@@ -129,3 +129,6 @@ ignore = dirty
 [submodule "bundle/vim-airline"]
 	path = bundle/vim-airline
 	url = https://github.com/bling/vim-airline
+[submodule "bundle/spacehi"]
+	path = bundle/spacehi
+	url = https://github.com/vim-scripts/spacehi.vim.git
