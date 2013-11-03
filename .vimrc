@@ -608,7 +608,7 @@ endif
 
 " -- LINUX SPECIFIC {{{1
 
-if os = "unix"
+if os == "linux"
     set background=dark
 endif
 
