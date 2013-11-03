@@ -114,3 +114,6 @@ ignore = dirty
     path = bundle/csv
     url = https://github.com/chrisbra/csv.vim.git
     ignore = dirty
+[submodule "bundle/unimpaired"]
+	path = bundle/unimpaired
+	url = https://github.com/tpope/vim-unimpaired.git
