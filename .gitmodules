@@ -1,7 +1,3 @@
-[submodule "bundle/scratch"]
-	path = bundle/scratch
-	url = https://github.com/kana/vim-scratch.git
-    ignore = dirty
 [submodule "bundle/ctrlp"]
 	path = bundle/ctrlp
 	url = https://github.com/kien/ctrlp.vim.git
@@ -25,10 +21,6 @@ ignore = dirty
 [submodule "bundle/netrw"]
 	path = bundle/netrw
 	url = https://github.com/vim-scripts/netrw.vim.git
-ignore = dirty
-[submodule "bundle/powerline"]
-	path = bundle/powerline
-	url = https://github.com/Lokaltog/vim-powerline.git
 ignore = dirty
 [submodule "bundle/supertab"]
 	path = bundle/supertab
@@ -66,10 +58,6 @@ ignore = dirty
 	path = bundle/zoomwin
 	url = https://github.com/vim-scripts/ZoomWin.git
 ignore = dirty
-[submodule "bundle/vim-latex-suite"]
-	path = bundle/vim-latex-suite
-	url = git@github.com:gerw/vim-latex-suite.git
-ignore = dirty
 [submodule "bundle/vim-signature"]
 	path = bundle/vim-signature
 	url = https://github.com/kshenoy/vim-signature.git
@@ -81,10 +69,6 @@ ignore = dirty
 [submodule "bundle/wordnet"]
 	path = bundle/wordnet
 	url = https://github.com/fncll/wordnet.vim.git
-ignore = dirty
-[submodule "bundle/vim-writeroom"]
-	path = bundle/vim-writeroom
-	url = https://github.com/fncll/vim-writeroom.git
 ignore = dirty
 [submodule "bundle/gundo"]
 	path = bundle/gundo
@@ -102,18 +86,25 @@ ignore = dirty
 	path = bundle/taskpaper
 	url = https://github.com/davidoc/taskpaper.vim.git
 ignore = dirty
-[submodule "bundle/vimwiki"]
-	path = bundle/vimwiki
-	url = https://github.com/vim-scripts/vimwiki.git
-ignore = dirty
 [submodule "bundle/align"]
 	path = bundle/align
   url = https://github.com/vim-scripts/Align.git
 ignore = dirty
-
 [submodule "bundle/vim-snippets"]
 	path = bundle/vim-snippets
 	url = https://github.com/honza/vim-snippets.git
-[submodule "bundle/hemisu"]
-	path = bundle/hemisu
-	url = https://github.com/noahfrederick/Hemisu.git
+[submodule "bundle/abolish"]
+	path = bundle/abolish
+	url = https://github.com/tpope/vim-abolish.git
+[submodule "bundle/unite"]
+	path = bundle/unite
+	url = https://github.com/Shougo/unite.vim.git
+[submodule "vim-colors-solarized"]
+	path = vim-colors-solarized
+	url = https://github.com/altercation/vim-colors-solarized.git
+[submodule "bundle/solarized"]
+	path = bundle/solarized
+	url = https://github.com/altercation/vim-colors-solarized.git
+[submodule "bundle/ragtag"]
+	path = bundle/ragtag
+	url = https://github.com/tpope/vim-ragtag.git

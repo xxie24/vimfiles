@@ -1,4 +1,4 @@
-" -- PRELIMINARIES {{{1
+" PRELIMINARIES {{{1
 
 " This isn't Vi, sucka! So no need to pretend.
 set nocompatible
@@ -6,29 +6,52 @@ set nocompatible
 "share the system clipboard aka the system register aka * (you know: yank and
 "paste from and to other apps)
 set clipboard=unnamed
+set history=20
 
-" various functions are stored in a separate file. too much hassle to do the
-" same with guifunctions
-source ~/.vim/vimrc/myfuncs.vim
-
-"" Pathogen is a great way to manage plugins, but sometimes I need 
+"" Pathogen is a great way to manage plugins, but sometimes I need
 "" temporarily disable a plugin, which I do below.
 " To disable a plugin, add it's bundle name to the following list
 let g:pathogen_disabled = []
-"example syntax:
+
+"call add(g:pathogen_disabled, 'abolish')
+"call add(g:pathogen_disabled, 'addon-mw-utils')
+"call add(g:pathogen_disabled, 'airline')
+"call add(g:pathogen_disabled, 'align')
+"call add(g:pathogen_disabled, 'csv')
+"call add(g:pathogen_disabled, 'ctrlp')
+"call add(g:pathogen_disabled, 'easymotion')
+"call add(g:pathogen_disabled, 'foldsearch')
+"call add(g:pathogen_disabled, 'gundo')
+"call add(g:pathogen_disabled, 'languagetool')
+"call add(g:pathogen_disabled, 'matchit')
+"call add(g:pathogen_disabled, 'nerdcommenter')
+"call add(g:pathogen_disabled, 'netrw')
+"call add(g:pathogen_disabled, 'ragtag')
+"call add(g:pathogen_disabled, 'quicktask')
+"call add(g:pathogen_disabled, 'scratch')
+"call add(g:pathogen_disabled, 'smartput')
+"call add(g:pathogen_disabled, 'snipmate')
 "call add(g:pathogen_disabled, 'supertab')
-call add(g:pathogen_disabled, 'nerdtree')
-call add(g:pathogen_disabled, 'vimwiki')
-call add(g:pathogen_disabled, 'delimitmate')
-call add(g:pathogen_disabled, 'smartput')
+"call add(g:pathogen_disabled, 'surround')
+"call add(g:pathogen_disabled, 'taglist')
+"call add(g:pathogen_disabled, 'taskpaper')
+"call add(g:pathogen_disabled, 'tlib-vim')
+"call add(g:pathogen_disabled, 'unite')
+"call add(g:pathogen_disabled, 'vim-pandoc')
 "call add(g:pathogen_disabled, 'vim-signature')
+"call add(g:pathogen_disabled, 'vim-snippets')
+"call add(g:pathogen_disabled, 'voom')
+"call add(g:pathogen_disabled, 'unimpaired')
+"call add(g:pathogen_disabled, 'wordnet')
+"call add(g:pathogen_disabled, 'yankring')
+"call add(g:pathogen_disabled, 'zoomwin')
 
 "using pathogen to manage plugins... waaay easier than doing it manually
 "[http://www.vim.org/scripts/script.php?script_id=23321] these functions read
-"all plugins and update tags (help) files. The latter can be a tiny bit slow, so I 
+"all plugins and update tags (help) files. The latter can be a tiny bit slow, so I
 "usually just run it from the command line with :Helptags
-call pathogen#infect() 
-"call pathogen#helptags()
+call pathogen#infect()
+call pathogen#helptags()
 
 "" Vim will have the memory of an *elephant* I tell you!
 
@@ -52,7 +75,7 @@ au BufLeave,FocusLost * silent! :wall
 set autoread
 
 "highlight those search terms. why not?
-set hlsearch
+"set hlsearch
 
 "and highlight incrementally as you search
 set incsearch
@@ -117,16 +140,6 @@ set smarttab
 " look at all the pretty colors
 syntax enable
 
-"set statusline=%<%f%m\ \[%{&ff}:%Y]\ %{getcwd()}\ \ \[%{strftime('%Y/%b/%d\ %a\ %I:%M\ %p')}\]\ \ [%{'t:'.tabpagenr()}\/%{tabpagenr('$')}]\ %=\ Line:%l\/%L\ Column:%c%V\ %P
-
-"I don't care what "they" say, dark backgrounds are easier on the screen eyes
-set background=dark
-colorscheme badwolf
-
-"a subtle highlight for current line
-":hi CursorLine   cterm=NONE ctermbg=NONE ctermfg=white Guibg=gray13 guifg=NONE
-":hi CursorLine   cterm=NONE ctermbg=NONE ctermfg=white Guibg=gray13 guifg=NONE
-
 " turn that cursor up to 11!
 ":set cursorline
 
@@ -154,8 +167,8 @@ set shortmess=atTI
 set cmdheight=3
 
 "disable all bells
-set t_vb= 
-set noerrorbells 
+set t_vb=
+set noerrorbells
 set visualbell
 
 "display comments in lower-right corner
@@ -192,14 +205,14 @@ set nofoldenable
 filetype plugin indent on
 
 " if editing vimscript/vimrc, fold using {{{ }}}
-augroup filetype_vim 
-    au! 
-    au FileType vim setlocal foldmethod=marker 
+augroup filetype_vim
+    au!
+    au FileType vim setlocal foldmethod=marker
 augroup END
 
 " if editing Pandoc/Markdown, set filetype, enable spell, reformat w/pandoc
-au BufNewFile,BufRead *.md,*.mtxt setlocal filetype=pandoc 
-au BufNewFile,BufRead *.md,*.mtxt setlocal equalprg=pandoc\ -t\ markdown\ --no-wrap
+au BufNewFile,BufRead *.md,*.mtxt setlocal filetype=pandoc|setlocal equalprg=pandoc\ -t\ markdown\ --no-wrap|setlocal shiftwidth=4|set spell
+
 "au BufNewFile,BufRead *.md :Voom markdown
 
 " http://vim.wikia.com/wiki/Vim_as_XML_Editor
@@ -207,9 +220,13 @@ let g:xml_syntax_folding=1
 au FileType xml setlocal foldmethod=syntax
 au FileType xml normal zR
 
+"Open epub files to edit individual parts
+au BufReadCmd   *.epub      call zip#Browse(expand("<amatch>"))
+
 "  }}}
 
-" -- GENERAL KEYBOARD SHORTCUTS, REMAPS & ABBREVS {{{1
+" -- GENERAL KEYBOARD REMAPS & ABBREVS {{{1
+" mappings that aren't tired to specific plugins below
 
 " move line by line with long lines
 noremap j gj
@@ -237,10 +254,15 @@ inoremap <Right> <NOP>
 
 "disable use of the mouse...I don't need no steenkin mouse
 set mouse=
- 
+
 "use a better key for leader commands (the ones that play 'Follow the Leader')
 let mapleader = ","
 let maplocalleader = ","
+
+" Automatically set a mark 'z' when searching to easily return
+" to location where I started searching with `z
+nnoremap / mz/
+nnoremap ? mz?
 
 " delete without placing into register/clipboard
 nnoremap <Leader>x "_d
@@ -257,11 +279,7 @@ noremap G G$
 vnoremap <silent> * :call VisualSearch('f')<CR>
 vnoremap <silent> # :call VisualSearch('b')<CR>
 
-" toggle between paste and normal mode
-nmap <leader>P <ESC>:call TogglePaste()<CR>
-imap <leader>P <ESC>:call TogglePaste()<CR>
-
-" show word count of current buffer 
+" show word count of current buffer
 noremap <leader>wc :echo WordCount()<CR>
 
 " turn the annoying search highlighting off when I'm done
@@ -274,12 +292,8 @@ cnoremap <C-K>      <C-U>
 cnoremap <C-P> <Up>
 cnoremap <C-N> <Down>
 
-" Add an empty line above or below current position
-nmap <leader>O m`O<ESC>``
-nmap <leader>o m`o<ESC>``
 
-" re-select whatever I just pasted
-nnoremap gp V`]
+
 
 " If Vim is compiled with relative numbering, use F9
 " to switch between relative, none, and standard numbering
@@ -296,7 +310,8 @@ nmap <silent> <leader>sp :set spell!<CR>
 
 "(pre)view current file in Brett Terpstra's awesome Marked markdown viewer see
 "http://markedapp.com/
-nnoremap <leader>m :silent !open -a Marked.app '%:p'<CR>
+
+nnoremap <leader>md :write<CR><bar>:silent !open -a Marked.app '%:p'<CR>
 
 " View current Pandoc file in Safari (which is smart enough to reuse tabs)
 nnoremap <silent><leader>mv :silent !pandoc -f markdown -t html -s -o /tmp/%:r.html %:r.md && sleep .5 && open -a /Applications/Safari.app/Contents/MacOS/Safari /tmp/%:r.html<CR>
@@ -340,40 +355,11 @@ nnoremap <leader>ev :tabe $MYVIMRC<cr>
 nnoremap <leader>es :tabe ~/scratch.md<cr>
 nnoremap <leader>eb :tabe ~/.bashrc<cr>
 
-"And source it, baby, source it!
-nnoremap <leader>sv :so $MYVIMRC<CR>
-
-
-
 " :TOhtml configuration
 let html_use_css = 1
 let use_xhtml = 1
 let html_ignore_folding = 1
 
-" }}}
-
-" -- VIM-LATEX {{{1
-" grep will always generate a file-name otherwise bad grep confuses vim-latex
-set grepprg=grep\ -nH\ $*
-
-" The following changes the default filetype back to 'tex':
-let g:tex_flavor='latex'
-
-" LaTeX looks good with some indentation. Or so "they" say
-set sw=2
-
-" TIP: if you write your \label's as \label{fig:something}, then if you
-" type in \ref{fig: and press <C-n> you will automatically cycle through
-" all the figure labels. Very useful!
-set iskeyword+=:
-let Tlist_Ctags_Cmd="/usr/local/bin/ctags"
-let tlist_tex_settings   = 'latex;s:sections;g:graphics;l:labels'
-let tlist_make_settings  = 'make;m:makros;t:targets'
-
-"}}}
-
-" -- USER FUNCTIONS ----- {{{1
-" moved to myfuncs.vim
 " }}}
 
 " -- PLUGINS AND PLUGIN SETTINGS {{{1
@@ -382,42 +368,56 @@ let tlist_make_settings  = 'make;m:makros;t:targets'
 let g:snips_author='Chris Lott'
 " }}}
 
+"" -- Abolish {{{2
+" Abolish provides a simple way to handle substitutions, including variants
+" and complex abbrevs. https://github.com/tpope/vim-abolish
+
+" Fix so-called smart quotes and typographic symbols
+map ,sq :%Subvert/{“,”,‘,’,–,—,…}/{\",\",',',--,---,...}/g<CR>
+"" }}}
+
 "" -- EasyMotion {{{2
 " EasyMotion will let you get around faster than the prom queen did the
-" football team 
+" football team
 "let g:EasyMotion_mapping_f = 'f'
 "let g:EasyMotion_mapping_F = 'F'
 let g:EasyMotion_mapping_f = '<Leader><Leader>f'
 let g:EasyMotion_mapping_F = '<Leader><Leader>F'
-let g:EasyMotion_mapping_w = '<Leader><Leader>fw'
-let g:EasyMotion_mapping_b = '<Leader><Leader>Fb'
-let g:EasyMotion_mapping_e = '<Leader><Leader>fe'
-let g:EasyMotion_mapping_ge = '<Leader><Leader>Fe'
-let g:EasyMotion_mapping_j = '<Leader><Leader>fj'
-let g:EasyMotion_mapping_k = '<Leader><Leader>fk'
-let g:EasyMotion_mapping_n = '<Leader><Leader>fn'
-let g:EasyMotion_mapping_N = '<Leader><Leader>fp'
+let g:EasyMotion_mapping_w = '<Leader><Leader>w'
+let g:EasyMotion_mapping_t = '<Leader><Leader>t'
+let g:EasyMotion_mapping_T = '<Leader><Leader>T'
+let g:EasyMotion_mapping_b = '<Leader><Leader>b'
+let g:EasyMotion_mapping_e = '<Leader><Leader>e'
+let g:EasyMotion_mapping_ge = '<Leader><Leader>ge'
+let g:EasyMotion_mapping_gE = '<Leader><Leader>gE'
+let g:EasyMotion_mapping_j = '<Leader><Leader>j'
+let g:EasyMotion_mapping_k = '<Leader><Leader>k'
+let g:EasyMotion_mapping_n = '<Leader><Leader>n'
+let g:EasyMotion_mapping_N = '<Leader><Leader>N'
 " }}}
 
 "" -- CtrlP {{{2
 " CtrlP [https://github.com/kien/ctrlp.vim] seems to be the best buffer
 " switching, file finding, most-recently used selecting utility around.
-nnoremap <leader>pf :CtrlP<CR>
+nnoremap <leader>pp :CtrlP<CR>
+nnoremap <leader>pa :CtrlPMixed<CR>
 nnoremap <leader>pb :CtrlPBuffer<CR>
 nnoremap <leader>pr :CtrlPMRUFiles<CR>
 nnoremap <leader>pm :CtrlPBookmarkDir<CR>
 
-let g:ctrlp_map = '<leader>p'
-let g:ctrlp_cmd = 'CtrlP'
+"let g:ctrlp_map = '<leader>p'
+"let g:ctrlp_cmd = 'CtrlPMixed'
 
 let g:ctrlp_use_caching = 1
 let g:ctrlp_clear_cache_on_exit = 0
 let g:ctrlp_cache_dir = $HOME.'/.vim/.ctrlpcache/ctrlp'
-let g:ctrlp_working_path_mode = 'ra'
+let g:ctrlp_working_path_mode = 'c'
 let g:ctrlp_open_new_file = 't'
 let g:ctrlp_arg_map = 1
-let g:ctrlp_match_window_reversed = 0
 let g:ctrlp_show_hidden = 1
+let g:ctrlp_follow_symlinks = 1
+let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+let g:ctrlp_match_window = 'top,order:ttb,min:1,max:10,results:10'
 " }}}
 
 "" -- Voom {{{2
@@ -425,27 +425,10 @@ let g:ctrlp_show_hidden = 1
 let g:voom_tree_width=35
 " make sure voomclose kills the outline
 com! Voomclose call Voom_DeleteOutline('')
-nnoremap <leader>vo :Voom<CR>
-nnoremap <leader>vd :Voom markdown<CR>
-nnoremap <leader>vt :VoomToggle<CR>
-"nnoremap <leader>vdt :VoomToggle markdown<CR>
+nnoremap <leader><leader>vo :Voom<CR>
+nnoremap <leader><leader>vd :Voom markdown<CR>
+nnoremap <leader><leader>vt :VoomToggle<CR>
 "}}}
-
-"" -- NERDTree {{{2
-" NERDTree filesystem explorer for browsing directories...you feel me?
-" [https://github.com/scrooloose/nerdtree]
-let NERDTreeBookmarksFile=$HOME.'/.vim/.NERDTreeBookmarks'
-let NERDTreeDirArrows=1
-let NERDTreeShowBookmarks=1
-let NERDChristmasTree=1
-let NERDTreeHighlightCursorline=1
-let NERDTreeWinSize=31
-map <leader>no :NERDTree<space>
-map <leader>nd :NERDTreeCWD<cr>
-map <leader>nb :NERDTreeFromBookmark<space>
-map <leader>nt :execute 'NERDTreeToggle ' . getcwd()<CR>
-map <leader>nf :NERDTreeFind<CR>
-" }}}
 
 "" -- Gundo {{{2
 " Gundo: visualize your undo tree. It's like back to the future!
@@ -453,98 +436,285 @@ map <leader>nf :NERDTreeFind<CR>
 let g:gundo_width=22
 let g:gundo_preview_bottom=1
 nnoremap <leader>u :GundoToggle<CR>
+
+"" -- Airline {{{2
+" Airline is a lighter replacement for powerline (customize the status line)
+" https://github.com/bling/vim-airline
+let g:airline_mode_map = {
+      \ '__' : '-',
+      \ 'n' : 'N',
+      \ 'i' : 'I',
+      \ 'R' : 'R',
+      \ 'c' : 'C',
+      \ 'v' : 'V',
+      \ 'V' : 'V',
+      \ '' : 'V',
+      \ 's' : 'S',
+      \ 'S' : 'S',
+      \ '' : 'S',
+      \ }
+let g:airline_theme = 'powerlineish'
+let g:airline_section_b = '%{getcwd()}'
+let g:airline_section_c = '%t'
+
 " }}}
 
-"" -- Scratch {{{2
-" Scratch provides an Emacs like scratch buffer
-" https://github.com/kana/vim-scratch
-map <Leader>so :ScratchOpen<cr>
-map <Leader>sc :ScratchClose<cr>
+"" -- Spacehi {{{2
+" Spacehi provides a toggle for showing and hiding trailing whitespace
+" Whitespace can something in Markdown, so I don't want it all the time
+" https://github.com/vim-scripts/spacehi.vim
+
+map <silent> <leader>tws :ToggleSpaceHi<CR>
+
 " }}}
 
-"" -- Powerline {{{2
-" Powerline makes your modeline magical
-" https://github.com/Lokaltog/vim-powerline
+" -- FUNCTIONS {{{1
+
+"" close all buffers (with save)
+function! Xall()
+        for t in range(1, tabpagenr('$')
+                for b in tabpagebuflist(t)
+                        if bufloaded(b)
+                        \ && bufname(b) == ""
+                        \ && getbufvar(b, '&mod')
+                                exe 'bw!' b
+                        endif
+                endfor
+        endfor
+        xall
+endfunc
+command! Xall call Xall()
+
+" function to search for word under cursor
+function! VisualSearch(direction) range
+  let l:saved_reg = @"
+  execute "normal! vgvy"
+  let l:pattern = escape(@", '\\/.*$^~[]')
+  let l:pattern = substitute(l:pattern, "\n$", "", "")
+  if a:direction == 'b'
+    execute "normal ?" . l:pattern . "^M"
+  elseif a:direction == 'gv'
+    call CmdLine("vimgrep " . '/'. l:pattern . '/' . ' **/*.')
+  elseif a:direction == 'f'
+    execute "normal /" . l:pattern . "^M"
+  endif
+  let @/ = l:pattern
+  let @" = l:saved_reg
+endfunction
+
+function! ResCur()
+  if line("'\"") <= line("$")
+    normal! g`"
+    return 1
+  endif
+endfunction
+
+augroup resCur
+  autocmd!
+  autocmd BufWinEnter * call ResCur()
+augroup END
+
+" BufOnly.vim  -  Delete all the buffers except the current/named buffer.
+" Copyright November 2003 by Christian J. Robinson <heptite@gmail.com>
+" Distributed under the terms of the Vim license.  See ":help license".
 "
-" Fancy it up (need a Powerline patched font)
-" https://github.com/Lokaltog/vim-powerline/wiki/Patched-fonts
-let g:Powerline_symbols = 'fancy'
+" Usage:
+" :Bonly / :BOnly / :Bufonly / :BufOnly [buffer]
+" Without any arguments the current buffer is kept.  With an argument the
+" buffer name/number supplied is kept.
 
-" Add Tab Warning Segment
-call Pl#Theme#InsertSegment(['raw', '%{TabWarning()}'], 'after', 'fileinfo')
+command! -nargs=? -complete=buffer -bang Bonly
+    \ :call BufOnly('<args>', '<bang>')
+command! -nargs=? -complete=buffer -bang BOnly
+    \ :call BufOnly('<args>', '<bang>')
+command! -nargs=? -complete=buffer -bang Bufonly
+    \ :call BufOnly('<args>', '<bang>')
+command! -nargs=? -complete=buffer -bang BufOnly
+    \ :call BufOnly('<args>', '<bang>')
 
-"recalculate the tab warning flag when idle and after writing
-autocmd cursorhold,bufwritepost * unlet! b:tab_warning
-" }}}
+function! BufOnly(buffer, bang)
+    if a:buffer == ''
+        " No buffer provided, use the current buffer.
+        let buffer = bufnr('%')
+    elseif (a:buffer + 0) > 0
+        " A buffer number was provided.
+        let buffer = bufnr(a:buffer + 0)
+    else
+        " A buffer name was provided.
+        let buffer = bufnr(a:buffer)
+    endif
 
-" }}}
+    if buffer == -1
+        echohl ErrorMsg
+        echomsg "No matching buffer for" a:buffer
+        echohl None
+        return
+    endif
 
-" -- VIMWIKI EVAL {{{1
+    let last_buffer = bufnr('$')
 
-" let g:vimwiki_list = [{'path': '~/db/prod/vimwiki/'}]
+    let delete_count = 0
+    let n = 1
+    while n <= last_buffer
+        if n != buffer && buflisted(n)
+            if a:bang == '' && getbufvar(n, '&modified')
+                echohl ErrorMsg
+                echomsg 'No write since last change for buffer'
+                            \ n '(add ! to override)'
+                echohl None
+            else
+                silent exe 'bdel' . a:bang . ' ' . n
+                if ! buflisted(n)
+                    let delete_count = delete_count+1
+                endif
+            endif
+        endif
+        let n = n+1
+    endwhile
+
+    if delete_count == 1
+        echomsg delete_count "buffer deleted"
+    elseif delete_count > 1
+        echomsg delete_count "buffers deleted"
+    endif
+
+endfunction
 
 "  }}}
+
+
+" -- REMOVED BUT REMEMBERED. RIP. {{{1
+
+"Replaced with [or ]or or cor from Unimpaired plugin
+"" function to cycle between normal, relative, and no line numbering
+ "func! CycleLNum()
+   "if &l:rnu
+     "setlocal nu
+   "elseif &l:nu
+     "setlocal nonu
+   "else
+     "setlocal rnu
+   "endif
+   "" sometimes (like in op-pending mode) the redraw doesn't happen
+   "" automatically
+   "redraw
+   "" do nothing, even in op-pending mode
+   "return ""
+ "endfunc
+"" endif
+
+" Replaced with [<SPC> and [<SPC> for unimpaired plugin
+" Add an empty line above or below current position
+"nmap <leader><leader>o :put=''<CR>
+"nmap <leader><leader>O :put!=''<CR>
+
+" This doesn't work with airline plugin and I haven't had time
+" to figure it out.
+" show a word count for the current buffer
+"function! WordCount()
+  "let s:old_status = v:statusmsg
+  "exe "silent normal g\<c-g>"
+  "let s:word_count = str2nr(split(v:statusmsg)[11])
+  "let v:statusmsg = s:old_status
+  "return s:word_count
+"endfunction
+
+" Also replaced with much smarter yp and yP from unimpaired plugin
+" when pasting from the OS into the terminal, you should use 'paste mode' to
+" prevent any mappings (such as 'jj' and the like from being run. This makes a
+" simple toggle to turn it on and off
+"function! TogglePaste()
+    "if  &paste == 0
+        "set paste
+        "echo "Paste is ON!"
+    "else
+        "set nopaste
+        "echo "Paste is OFF!"
+    "endif
+"endfunction
+
+
+" toggle between paste and normal mode
+"nmap <leader>P <ESC>:call TogglePaste()<CR>
+"imap <leader>P <ESC>:call TogglePaste()<CR>
+
+"" Airline plugin does this already, plus trailing spaces
+"return '[&et]' if &et is set wrong
+"return '[mixed-indenting]' if spaces and tabs are used to indent
+"return an empty string if everything is fine
+"function! TabWarning()
+  "if !exists("b:tab_warning")
+    "let tabs = search('^\t', 'nw') != 0
+    "let spaces = search('^ ', 'nw') != 0
+
+    "if tabs && spaces
+      "let b:tab_warning = '[mixed-indenting]'
+    "elseif (spaces && !&et) || (tabs && &et)
+      "let b:tab_warning = '[&et]'
+    "else
+      "let b:tab_warning = ''
+    "endif
+  "endif
+  "return b:tab_warning
+"endfunction
+
+" }}}
+
 " -- TESTING, PENDING DELETION, UNCATEGORIZED {{{1
-
-" Automatically set a mark 'S' when searching to easily return 
-" to location where I started searching with `S
-nnoremap / mz/
-nnoremap ? mz?
-
-" Convert curly quotes to straight.
-" Any argument causes substitute to confirm changes.
-":%ToStraight    " convert all
-":ToStraight     " convert current line only
-":%ToStraight c  " convert all and confirm each 
-
-function! ToStraight(line1, line2, args)
-  let flags = 'eg'
-  let range = a:line1 . ',' . a:line2
-  if empty(a:args)
-    let range = 'silent ' . range
-  else
-    let flags .= 'c'
-  endif
-  let search = @/
-  exe range . "s/[‘’]/'/" . flags
-
-  exe range . 's/[“”]/"/' . flags
-  nohl
-  let @/ = search
-endfunction
-command! -nargs=? -range ToStraight call ToStraight(<line1>, <line2>, '<args>') 
-
-au BufReadCmd   *.epub      call zip#Browse(expand("<amatch>"))
-
-"let dnfile = strftime("%Y") . ".md"
-"let dncm = 'edit '.dnfile
-"nnoremap <leader>dn :execute 'e '.fnameescape(dnfile)<cr>
-
-" Use WriteRoom for distraction free composition
-function! WW()
-  :set showtabline=0
-  :set noshowmode
-  :set laststatus=0
-  :set noruler
-  :set noshowcmd
-  :call VimWriteRoom()
-endfunction
-
-nnoremap WW :call WW()<CR>
 
 " show tabline even when there is only one tab open
 set showtabline=2
 
-au BufNewFile,BufEnter,BufRead pentadactyl.txt setlocal filetype=pandoc 
-au BufNewFile,BufEnter,BufRead pentadactyl.txt setlocal equalprg=pandoc\ -t\ markdown\ --no-wrap
-
 " Use [formd](http://drbunsen.github.io/formd/) to convert
 " markdown links to and from reference and inline styles
-nmap <leader>tor :%! ~/bin/formd -r<CR>
-nmap <leader>toi :%! ~/bin/formd -i<CR>
+nmap <leader>tor :%! /usr/local/bin/formd/formd -r<CR>
+nmap <leader>toi :%! /usr/local/bin/formd/formd -i<CR>
 
-" Fix so-called smart quotes and typographic symbols
-map ,fq :%s/“/"/e<enter>:%s/”/"/e<enter>:%s/‘/'/e<enter>:%s/’/'/e<enter>:%s/–/--/e<enter>:%s/—/---/e<enter>:%s/…/.../e<enter>
+" Toggle Vexplore with Ctrl-E
+function! ToggleVExplorer()
+  if exists("t:expl_buf_num")
+      let expl_win_num = bufwinnr(t:expl_buf_num)
+      if expl_win_num != -1
+          let cur_win_nr = winnr()
+          exec expl_win_num . 'wincmd w'
+          close
+          exec cur_win_nr . 'wincmd w'
+          unlet t:expl_buf_num
+      else
+          unlet t:expl_buf_num
+      endif
+  else
+      exec '1wincmd w'
+      Vexplore
+      let t:expl_buf_num = bufnr("%")
+  endif
+endfunction
+map <silent> <C-E> :call ToggleVExplorer()<CR>
 
+" Hit enter in the file browser to open the selected
+" file with :vsplit to the right of the browser.
+let g:netrw_browse_split = 4
+let g:netrw_altv = 1
+
+" Default to tree mode
+let g:netrw_liststyle=3
+
+" Change directory to the current buffer when opening files.
+set autochdir
+
+" Determine which platform Vim is running on
+function! GetRunningOS()
+  if has("win32")
+    return "win"
+  endif
+  if has("unix")
+    if system('uname')=~'Darwin'
+      return "mac"
+    else
+      return "linux"
+    endif
+  endif
+endfunction
+let os=GetRunningOS()
 " }}}
-" two, one.
+

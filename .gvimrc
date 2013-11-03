@@ -1,5 +1,5 @@
 " initial window position
-winpos 30 30
+winpos 500 100
 
 " start vim with this many lines (how tall) normally 45 for screen recording
 " set to 40
@@ -107,6 +107,10 @@ function! GuiTabToolTip()
 
   return tip
 endfunction
+
+"I don't care what "they" say, dark backgrounds are easier on the screen eyes
+set background=light
+colorscheme solarized
 
 
 "color asmdev
