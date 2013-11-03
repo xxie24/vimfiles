@@ -92,7 +92,8 @@ ignore = dirty
 ignore = dirty
 [submodule "bundle/vim-snippets"]
 	path = bundle/vim-snippets
-	url = https://github.com/honza/vim-snippets.git
+    url = https://github.com/honza/vim-snippets.git
+    ignore = dirty
 [submodule "bundle/abolish"]
 	path = bundle/abolish
 	url = https://github.com/tpope/vim-abolish.git
@@ -108,6 +109,8 @@ ignore = dirty
 [submodule "bundle/ragtag"]
 	path = bundle/ragtag
     url = https://github.com/tpope/vim-ragtag.git
+    ignore = dirty
 [submodule "bundle/csv"]
     path = bundle/csv
     url = https://github.com/chrisbra/csv.vim.git
+    ignore = dirty
