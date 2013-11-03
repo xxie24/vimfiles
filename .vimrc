@@ -589,7 +589,7 @@ let g:netrw_liststyle=3
 
 " -- OS X SPECIFIC {{{1
 
-if os == "unix"
+if os == "mac"
     "(pre)view current file in Brett Terpstra's awesome Marked markdown viewer see
     "http://markedapp.com/
     nnoremap <leader>md :write<CR><bar>:silent !open -a Marked.app '%:p'<CR>
@@ -602,6 +602,14 @@ if os == "unix"
 
     "Open current markdown document as RTF in Word (blech)
     nnoremap <silent><leader>mr :silent !pandoc -f markdown -t rtf -s -o /tmp/%:r.rtf %:r.md \| open -a /Applications/Microsoft\ Office\ 2011/Microsoft\ Word.app/Contents/MacOS/Microsoft\ Word /tmp/%:r.rtf<CR>
+endif
+
+" }}}
+
+" -- LINUX SPECIFIC {{{1
+
+if os = "unix"
+    set background=dark
 endif
 
 " }}}
