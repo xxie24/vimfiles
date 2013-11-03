@@ -1,4 +1,4 @@
-" PRELIMINARIES {{{1
+" -- PRELIMINARIES {{{1
 
 " This isn't Vi, sucka! So no need to pretend.
 set nocompatible
@@ -273,10 +273,8 @@ let g:SuperTabDefaultCompletionType = "context"
 
 " -- FILE OPERATIONS {{{1
 
-" Always change to the directory of the current file
-nnoremap ,cd :cd %:p:h<CR>:pwd<CR>
-
-au BufEnter * lcd %:p:h
+" Change directory to the current buffer when opening/entering files/buffers
+set autochdir
 
 "write the current file, no questions asked
 nnoremap <leader>w :w!<cr>
@@ -402,9 +400,25 @@ map <silent> <leader>tws :ToggleSpaceHi<CR>
 
 " -- FUNCTIONS {{{1
 
+" Determine which platform Vim is running on
+function! GetRunningOS()
+  if has("win32")
+    return "win"
+  endif
+  if has("unix")
+    if system('uname')=~'Darwin'
+      return "mac"
+    else
+      return "linux"
+    endif
+  endif
+endfunction
+let os=GetRunningOS()
+
+
 "" close all buffers (with save)
 function! Xall()
-        for t in range(1, tabpagenr('$')
+        for t in range(1, tabpagenr('$'))
                 for b in tabpagebuflist(t)
                         if bufloaded(b)
                         \ && bufname(b) == ""
@@ -415,7 +429,9 @@ function! Xall()
         endfor
         xall
 endfunc
+
 command! Xall call Xall()
+
 
 " function to search for word under cursor
 function! VisualSearch(direction) range
@@ -517,38 +533,6 @@ endfunction
 
 " -- REMOVED BUT REMEMBERED. RIP. {{{1
 
-" "Replaced with [or ]or or cor from Unimpaired plugin
-
-" If Vim is compiled with relative numbering, use F9
-" to switch between relative, none, and standard numbering
-if exists('+relativenumber')
- nnoremap <expr> <F9> CycleLNum()
- xnoremap <expr> <F9> CycleLNum()
- onoremap <expr> <F9> CycleLNum()
-endif
-
-" function to cycle between normal, relative, and no line numbering
- "func! CycleLNum()
-   "if &l:rnu
-     "setlocal nu
-   "elseif &l:nu
-     "setlocal nonu
-   "else
-     "setlocal rnu
-   "endif
-   "" sometimes (like in op-pending mode) the redraw doesn't happen
-   "" automatically
-   "redraw
-   "" do nothing, even in op-pending mode
-   "return ""
- "endfunc
-"" endif
-
-" Replaced with [<SPC> and [<SPC> for unimpaired plugin
-" Add an empty line above or below current position
-"nmap <leader><leader>o :put=''<CR>
-"nmap <leader><leader>O :put!=''<CR>
-
 " This doesn't work with airline plugin and I haven't had time
 " to figure it out.
 " show a word count for the current buffer
@@ -560,51 +544,12 @@ endif
   "return s:word_count
 "endfunction
 
-" Also replaced with much smarter yp and yP from unimpaired plugin
-" when pasting from the OS into the terminal, you should use 'paste mode' to
-" prevent any mappings (such as 'jj' and the like from being run. This makes a
-" simple toggle to turn it on and off
-"function! TogglePaste()
-    "if  &paste == 0
-        "set paste
-        "echo "Paste is ON!"
-    "else
-        "set nopaste
-        "echo "Paste is OFF!"
-    "endif
-"endfunction
-
-
-" toggle between paste and normal mode
-"nmap <leader>P <ESC>:call TogglePaste()<CR>
-"imap <leader>P <ESC>:call TogglePaste()<CR>
-
-"" Airline plugin does this already, plus trailing spaces
-"return '[&et]' if &et is set wrong
-"return '[mixed-indenting]' if spaces and tabs are used to indent
-"return an empty string if everything is fine
-"function! TabWarning()
-  "if !exists("b:tab_warning")
-    "let tabs = search('^\t', 'nw') != 0
-    "let spaces = search('^ ', 'nw') != 0
-
-    "if tabs && spaces
-      "let b:tab_warning = '[mixed-indenting]'
-    "elseif (spaces && !&et) || (tabs && &et)
-      "let b:tab_warning = '[&et]'
-    "else
-      "let b:tab_warning = ''
-    "endif
-  "endif
-  "return b:tab_warning
-"endfunction
-
 " }}}
 
 " -- TESTING, PENDING DELETION, UNCATEGORIZED {{{1
 
-" show tabline even when there is only one tab open
-set showtabline=2
+" Manually change to directory of current file
+"nnoremap ,cd :cd %:p:h<CR>:pwd<CR>
 
 " Use [formd](http://drbunsen.github.io/formd/) to convert
 " markdown links to and from reference and inline styles
@@ -640,40 +585,23 @@ let g:netrw_altv = 1
 " Default to tree mode
 let g:netrw_liststyle=3
 
-" Change directory to the current buffer when opening files.
-set autochdir
-
-" Determine which platform Vim is running on
-function! GetRunningOS()
-  if has("win32")
-    return "win"
-  endif
-  if has("unix")
-    if system('uname')=~'Darwin'
-      return "mac"
-    else
-      return "linux"
-    endif
-  endif
-endfunction
-let os=GetRunningOS()
 " }}}
 
-" -- OS X Specific {{{1
+" -- OS X SPECIFIC {{{1
 
 if os == "unix"
-"(pre)view current file in Brett Terpstra's awesome Marked markdown viewer see
-"http://markedapp.com/
-nnoremap <leader>md :write<CR><bar>:silent !open -a Marked.app '%:p'<CR>
+    "(pre)view current file in Brett Terpstra's awesome Marked markdown viewer see
+    "http://markedapp.com/
+    nnoremap <leader>md :write<CR><bar>:silent !open -a Marked.app '%:p'<CR>
 
-" View current Pandoc file in Safari (which is smart enough to reuse tabs)
-nnoremap <silent><leader>mv :silent !pandoc -f markdown -t html -s -o /tmp/%:r.html %:r.md && sleep .5 && open -a /Applications/Safari.app/Contents/MacOS/Safari /tmp/%:r.html<CR>
+    " View current Pandoc file in Safari (which is smart enough to reuse tabs)
+    nnoremap <silent><leader>mv :silent !pandoc -f markdown -t html -s -o /tmp/%:r.html %:r.md && sleep .5 && open -a /Applications/Safari.app/Contents/MacOS/Safari /tmp/%:r.html<CR>
 
-"Open current markdown document as PDF in Preview
-nnoremap <silent><leader>mp :silent !pandoc -f markdown -o /tmp/%:r.pdf %:r.md && open -a /Applications/Adobe\ Acrobat\ X\ Pro/Adobe\ Acrobat\ Pro.app/ /tmp/%:r.pdf<CR>
+    "Open current markdown document as PDF in Preview
+    nnoremap <silent><leader>mp :silent !pandoc -f markdown -o /tmp/%:r.pdf %:r.md && open -a /Applications/Adobe\ Acrobat\ X\ Pro/Adobe\ Acrobat\ Pro.app/ /tmp/%:r.pdf<CR>
 
-"Open current markdown document as RTF in Word (blech)
-nnoremap <silent><leader>mr :silent !pandoc -f markdown -t rtf -s -o /tmp/%:r.rtf %:r.md \| open -a /Applications/Microsoft\ Office\ 2011/Microsoft\ Word.app/Contents/MacOS/Microsoft\ Word /tmp/%:r.rtf<CR>
+    "Open current markdown document as RTF in Word (blech)
+    nnoremap <silent><leader>mr :silent !pandoc -f markdown -t rtf -s -o /tmp/%:r.rtf %:r.md \| open -a /Applications/Microsoft\ Office\ 2011/Microsoft\ Word.app/Contents/MacOS/Microsoft\ Word /tmp/%:r.rtf<CR>
 endif
 
 " }}}
