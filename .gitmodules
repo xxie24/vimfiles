@@ -40,7 +40,7 @@ ignore = dirty
 ignore = dirty
 [submodule "bundle/easymotion"]
 	path = bundle/easymotion
-	url = git://github.com/Lokaltog/vim-easymotion.git
+	url = https://github.com/Lokaltog/vim-easymotion.git
 ignore = dirty
 [submodule "bundle/snipmate"]
 	path = bundle/snipmate
