@@ -118,3 +118,4 @@ colorscheme solarized
 ":highlight Cursor cterm=NONE ctermbg=NONE guifg=black guibg=LawnGreen
 
 
+
