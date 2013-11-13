@@ -366,6 +366,11 @@ nnoremap <leader><leader>vt :VoomToggle<CR>
 let g:gundo_width=22
 let g:gundo_preview_bottom=1
 nnoremap <leader>u :GundoToggle<CR>
+"}}}
+
+"" -- Vimwiki {{{2
+let g:vimwiki_list = [{'path': '~/db/vimwiki/', 'path_html': '~/db/vimwikihtml/'}]
+"}}}
 
 "" -- Airline {{{2
 " Airline is a lighter replacement for powerline (customize the status line)
@@ -623,7 +628,7 @@ function! TwiddleCase(str)
   return result
 endfunction
 
-vnoremap ~ y:call setreg('', TwiddleCase(@"), getregtype(''))<CR>gv""Pgv
+noremap ~ y:call setreg('', TwiddleCase(@"), getregtype(''))<CR>gv""Pgv
 
 " }}}
 
