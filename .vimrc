@@ -16,6 +16,7 @@ set fileformats=unix,mac,dos
 " To disable a plugin, add it's bundle name to the following list. eg
 " call add(g:pathogen_disabled, 'abolish')
 let g:pathogen_disabled = []
+call add(g:pathogen_disabled, 'vim-signature')
 
 "using pathogen to manage plugins... waaay easier than doing it manually
 "[http://www.vim.org/scripts/script.php?script_id=23321] these functions read
@@ -66,13 +67,13 @@ set ttyfast
 set undofile
 
 "but I don't want undofiles all over the place
-set undodir=$HOME/tmp
+set undodir=$HOME/tmp/vim
 
 "make backup files in this directory (so they're not all over)
-set backupdir=$HOME/tmp
+set backupdir=$HOME/tmp/vim
 
 "save swap files to a specific directory (less mess!)
-set directory=$HOME/tmp
+set directory=$HOME/tmp/vim
 
 "vim can be weird... I'm still getting backups, but only when I close a file
 set nowritebackup
@@ -122,7 +123,7 @@ set autoread
 set virtualedit=onemore
 
 "keep cursor eight lines from top and bottom as it scrolls
-set scrolloff=8
+set scrolloff=12
 
 "show line numbers... this is useful even with prose. Seriously. Would I lie?
 set nu
@@ -369,7 +370,7 @@ nnoremap <leader>u :GundoToggle<CR>
 "}}}
 
 "" -- Vimwiki {{{2
-let g:vimwiki_list = [{'path': '~/db/vimwiki/', 'path_html': '~/db/vimwikihtml/'}]
+let g:vimwiki_list = [{'path': '~/db/vimwiki/', 'path_html': '~/db/Apps/site44/vimwiki.site44.com/'}]
 "}}}
 
 "" -- Airline {{{2
@@ -402,6 +403,12 @@ let g:airline_section_c = '%t'
 map <silent> <leader>tws :ToggleSpaceHi<CR>
 
 " }}}
+
+" -- Unite {{{2
+" still not convinced this is better for my purposes than ctrlP
+" let g:unite_source_history_yank_enable = 1
+
+"  }}}
 
 " -- FUNCTIONS {{{1
 
@@ -553,6 +560,8 @@ endfunction
 
 " -- TESTING, PENDING DELETION, UNCATEGORIZED {{{1
 
+nnoremap <esc> :noh<return><esc>
+
 " Manually change to directory of current file
 "nnoremap ,cd :cd %:p:h<CR>:pwd<CR>
 
@@ -590,6 +599,7 @@ let g:netrw_altv = 1
 " Default to tree mode
 let g:netrw_liststyle=3
 
+
 " }}}
 
 " -- OS X SPECIFIC {{{1
@@ -616,19 +626,6 @@ endif
 if os == "linux"
     set background=dark
 endif
-
-function! TwiddleCase(str)
-  if a:str ==# toupper(a:str)
-    let result = tolower(a:str)
-  elseif a:str ==# tolower(a:str)
-    let result = substitute(a:str,'\(\<\w\+\>\)', '\u\1', 'g')
-  else
-    let result = toupper(a:str)
-  endif
-  return result
-endfunction
-
-noremap ~ y:call setreg('', TwiddleCase(@"), getregtype(''))<CR>gv""Pgv
 
 " }}}
 

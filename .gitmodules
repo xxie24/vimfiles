@@ -152,3 +152,21 @@ ignore = dirty
 [submodule "bundle/calendar-vim"]
 	path = bundle/calendar-vim
 	url = git://github.com/mattn/calendar-vim
+[submodule "bundle/tagbar"]
+	path = bundle/tagbar
+	url = https://github.com/majutsushi/tagbar.git
+[submodule "bundle/vim-over"]
+	path = bundle/vim-over
+	url = https://github.com/osyo-manga/vim-over.git
+[submodule "bundle/vim-vinegar"]
+	path = bundle/vim-vinegar
+	url = git://github.com/tpope/vim-vinegar.git
+[submodule "bundle/tiddlywiki"]
+	path = bundle/tiddlywiki
+	url = https://github.com/vim-scripts/tiddlywiki.git
+[submodule "bundle/renamer"]
+	path = bundle/renamer
+	url = https://github.com/vim-scripts/renamer.vim.git
+[submodule "bundle/calendar"]
+	path = bundle/calendar
+	url = https://github.com/itchyny/calendar.vim.git
