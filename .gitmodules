@@ -70,10 +70,6 @@ ignore = dirty
 	path = bundle/gundo
 	url = https://github.com/sjl/gundo.vim.git
 ignore = dirty
-[submodule "bundle/vim-pandoc"]
-	path = bundle/vim-pandoc
-	url = https://github.com/vim-pandoc/vim-pandoc.git
-ignore = dirty
 [submodule "bundle/quicktask"]
 	path = bundle/quicktask
 	url = https://github.com/aaronbieber/quicktask.git
