@@ -140,4 +140,5 @@ ignore = dirty
 	url = https://github.com/junegunn/vim-easy-align.git
 [submodule "bundle/over"]
 	path = bundle/over
-	url = https://github.com/osyo-manga/vim-over.git
+    url = https://github.com/osyo-manga/vim-over.git
+    ignore = dirty
