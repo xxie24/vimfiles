@@ -17,6 +17,7 @@ set fileformats=unix,mac,dos
 " call add(g:pathogen_disabled, 'abolish')
 let g:pathogen_disabled = []
 call add(g:pathogen_disabled, 'vim-signature')
+call add(g:pathogen_disabled, 'vim-pandoc')
 
 "using pathogen to manage plugins... waaay easier than doing it manually
 "[http://www.vim.org/scripts/script.php?script_id=23321] these functions read
@@ -260,12 +261,10 @@ nmap <silent> <leader>sp :set spell!<CR>
 
 " -- MARKDOWN / PANDOC WORK {{{1
 
-" vim-pandoc (https://github.com/vim-pandoc/vim-pandoc) kills. Not literally.
-" But it is unbearably slow unless I turn off the conditional link highlighting
-let g:pandoc_no_empty_implicits = 1
+" vim-pantondoc (https://github.com/vim-pandoc/vim-pandoc) 
 
-" add ability to complete citations from matches in all fields, not just key
-let g:pandoc_use_bibtool = 1
+"Use Pandoc mode for Markdown files
+let g:pantondoc_use_pandoc_markdown = 1
 
 " just use Tab key for completion. Thank you Supertab [https://github.com/ervandew/supertab]
 let g:SuperTabDefaultCompletionType = "context"
@@ -320,7 +319,7 @@ let g:EasyMotion_mapping_F = '<Leader><Leader>F'
 let g:EasyMotion_mapping_w = '<Leader><Leader>w'
 let g:EasyMotion_mapping_t = '<Leader><Leader>t'
 let g:EasyMotion_mapping_T = '<Leader><Leader>T'
-let g:EasyMotion_mapping_b = '<Leader><Leader>b'
+" let g:EasyMotion_mapping_b = '<Leader><Leader>b'
 let g:EasyMotion_mapping_e = '<Leader><Leader>e'
 let g:EasyMotion_mapping_ge = '<Leader><Leader>ge'
 let g:EasyMotion_mapping_gE = '<Leader><Leader>gE'
@@ -559,7 +558,7 @@ endfunction
 " }}}
 
 " -- TESTING, PENDING DELETION, UNCATEGORIZED {{{1
-
+let g:sneak#streak = 1
 nnoremap <esc> :noh<return><esc>
 
 " Manually change to directory of current file

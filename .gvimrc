@@ -32,7 +32,8 @@ set guicursor+=sm:block-Cursor-blinkwait175-blinkoff150-blinkon175
 "they are sent at the time of entering a GUI window
 
 "use a pretty font (though I'd like to find something better)
-set guifont=Source\ Code\ Pro\ Light\ for\ Powerline:h14
+"set guifont=Source\ Code\ Pro\ Light\ for\ Powerline:h14
+set guifont=Consolas:h14
 
 set gtl=%{GuiTabLabel()} gtt=%{GuiTabToolTip()}
 "make those tabs informative

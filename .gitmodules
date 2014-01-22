@@ -58,10 +58,6 @@ ignore = dirty
 	path = bundle/zoomwin
 	url = https://github.com/vim-scripts/ZoomWin.git
 ignore = dirty
-[submodule "bundle/vim-signature"]
-	path = bundle/vim-signature
-	url = https://github.com/kshenoy/vim-signature.git
-ignore = dirty
 [submodule "bundle/smartput"]
 	path = bundle/smartput
 	url = https://github.com/vim-scripts/Smartput.git
@@ -170,3 +166,18 @@ ignore = dirty
 [submodule "bundle/calendar"]
 	path = bundle/calendar
 	url = https://github.com/itchyny/calendar.vim.git
+[submodule "bundle/goyo"]
+	path = bundle/goyo
+	url = https://github.com/junegunn/goyo.vim.git
+[submodule "bundle/sneak"]
+	path = bundle/sneak
+	url = https://github.com/justinmk/vim-sneak.git
+[submodule "bundle/vim-pandoc-syntax"]
+	path = bundle/vim-pandoc-syntax
+	url = https://github.com/vim-pandoc/vim-pandoc-syntax.git
+[submodule "bundle/vim-pantondoc"]
+	path = bundle/vim-pantondoc
+	url = https://github.com/vim-pandoc/vim-pantondoc.git
+[submodule "bundle/vim-pandoc-after"]
+	path = bundle/vim-pandoc-after
+	url = https://github.com/vim-pandoc/vim-pandoc-after
