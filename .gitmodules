@@ -62,18 +62,6 @@ ignore = dirty
 	path = bundle/gundo
 	url = https://github.com/sjl/gundo.vim.git
 ignore = dirty
-[submodule "bundle/quicktask"]
-	path = bundle/quicktask
-	url = https://github.com/aaronbieber/quicktask.git
-ignore = dirty
-[submodule "bundle/taskpaper"]
-	path = bundle/taskpaper
-	url = https://github.com/davidoc/taskpaper.vim.git
-ignore = dirty
-[submodule "bundle/align"]
-	path = bundle/align
-  url = https://github.com/vim-scripts/Align.git
-ignore = dirty
 [submodule "bundle/vim-snippets"]
 	path = bundle/vim-snippets
     url = https://github.com/honza/vim-snippets.git
@@ -128,11 +116,7 @@ ignore = dirty
 [submodule "bundle/vimwiki"]
 	path = bundle/vimwiki
     url = https://github.com/vimwiki/vimwiki.git
-
     ignore = dirty
-[submodule "bundle/calendar-vim"]
-	path = bundle/calendar-vim
-	url = git://github.com/mattn/calendar-vim
 [submodule "bundle/tagbar"]
 	path = bundle/tagbar
 	url = https://github.com/majutsushi/tagbar.git
@@ -142,15 +126,9 @@ ignore = dirty
 [submodule "bundle/vim-vinegar"]
 	path = bundle/vim-vinegar
 	url = git://github.com/tpope/vim-vinegar.git
-[submodule "bundle/tiddlywiki"]
-	path = bundle/tiddlywiki
-	url = https://github.com/vim-scripts/tiddlywiki.git
 [submodule "bundle/renamer"]
 	path = bundle/renamer
 	url = https://github.com/vim-scripts/renamer.vim.git
-[submodule "bundle/calendar"]
-	path = bundle/calendar
-	url = https://github.com/itchyny/calendar.vim.git
 [submodule "bundle/goyo"]
 	path = bundle/goyo
 	url = https://github.com/junegunn/goyo.vim.git
@@ -166,3 +144,6 @@ ignore = dirty
 [submodule "bundle/vim-pandoc-after"]
 	path = bundle/vim-pandoc-after
 	url = https://github.com/vim-pandoc/vim-pandoc-after
+[submodule "bundle/vim-easy-align"]
+	path = bundle/vim-easy-align
+	url = https://github.com/junegunn/vim-easy-align.git
