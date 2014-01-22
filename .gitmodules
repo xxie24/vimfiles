@@ -101,9 +101,6 @@ ignore = dirty
 [submodule "bundle/spacehi"]
 	path = bundle/spacehi
 	url = https://github.com/vim-scripts/spacehi.vim.git
-[submodule "bundle/vim-startify"]
-	path = bundle/vim-startify
-	url = https://github.com/mhinz/vim-startify.git
 [submodule "bundle/sparkup"]
 	path = bundle/sparkup
 	url = https://github.com/rstacruz/sparkup.git
@@ -117,9 +114,6 @@ ignore = dirty
 	path = bundle/vimwiki
     url = https://github.com/vimwiki/vimwiki.git
     ignore = dirty
-[submodule "bundle/tagbar"]
-	path = bundle/tagbar
-	url = https://github.com/majutsushi/tagbar.git
 [submodule "bundle/vim-vinegar"]
 	path = bundle/vim-vinegar
 	url = git://github.com/tpope/vim-vinegar.git
@@ -144,3 +138,6 @@ ignore = dirty
 [submodule "bundle/vim-easy-align"]
 	path = bundle/vim-easy-align
 	url = https://github.com/junegunn/vim-easy-align.git
+[submodule "bundle/over"]
+	path = bundle/over
+	url = https://github.com/osyo-manga/vim-over.git
