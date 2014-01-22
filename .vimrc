@@ -16,8 +16,7 @@ set fileformats=unix,mac,dos
 " To disable a plugin, add it's bundle name to the following list. eg
 " call add(g:pathogen_disabled, 'abolish')
 let g:pathogen_disabled = []
-call add(g:pathogen_disabled, 'vim-signature')
-call add(g:pathogen_disabled, 'vim-pandoc')
+call add(g:pathogen_disabled, 'easymotion')
 
 "using pathogen to manage plugins... waaay easier than doing it manually
 "[http://www.vim.org/scripts/script.php?script_id=23321] these functions read
@@ -311,24 +310,6 @@ let g:snips_author='Chris Lott'
 map ,sq :%Subvert/{“,”,‘,’,–,—,…}/{\",\",',',--,---,...}/g<CR>
 "" }}}
 
-"" -- EasyMotion {{{2
-" EasyMotion will let you get around faster than the prom queen did the
-" football team
-let g:EasyMotion_mapping_f = '<Leader><Leader>f'
-let g:EasyMotion_mapping_F = '<Leader><Leader>F'
-let g:EasyMotion_mapping_w = '<Leader><Leader>w'
-let g:EasyMotion_mapping_t = '<Leader><Leader>t'
-let g:EasyMotion_mapping_T = '<Leader><Leader>T'
-" let g:EasyMotion_mapping_b = '<Leader><Leader>b'
-let g:EasyMotion_mapping_e = '<Leader><Leader>e'
-let g:EasyMotion_mapping_ge = '<Leader><Leader>ge'
-let g:EasyMotion_mapping_gE = '<Leader><Leader>gE'
-let g:EasyMotion_mapping_j = '<Leader><Leader>j'
-let g:EasyMotion_mapping_k = '<Leader><Leader>k'
-let g:EasyMotion_mapping_n = '<Leader><Leader>n'
-let g:EasyMotion_mapping_N = '<Leader><Leader>N'
-" }}}
-
 "" -- CtrlP {{{2
 " CtrlP [https://github.com/kien/ctrlp.vim] seems to be the best buffer
 " switching, file finding, most-recently used selecting utility around.
@@ -403,11 +384,6 @@ map <silent> <leader>tws :ToggleSpaceHi<CR>
 
 " }}}
 
-" -- Unite {{{2
-" still not convinced this is better for my purposes than ctrlP
-" let g:unite_source_history_yank_enable = 1
-
-"  }}}
 
 " -- FUNCTIONS {{{1
 

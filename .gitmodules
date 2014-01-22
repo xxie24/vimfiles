@@ -18,10 +18,6 @@ ignore = dirty
 	path = bundle/nerdcommenter
 	url = https://github.com/scrooloose/nerdcommenter.git
 ignore = dirty
-[submodule "bundle/netrw"]
-	path = bundle/netrw
-	url = https://github.com/vim-scripts/netrw.vim.git
-ignore = dirty
 [submodule "bundle/supertab"]
 	path = bundle/supertab
 	url = https://github.com/ervandew/supertab.git
@@ -37,10 +33,6 @@ ignore = dirty
 [submodule "bundle/addon-mw-utils"]
 	path = bundle/addon-mw-utils
 	url = https://github.com/MarcWeber/vim-addon-mw-utils.git
-ignore = dirty
-[submodule "bundle/easymotion"]
-	path = bundle/easymotion
-	url = https://github.com/Lokaltog/vim-easymotion.git
 ignore = dirty
 [submodule "bundle/snipmate"]
 	path = bundle/snipmate
@@ -89,9 +81,6 @@ ignore = dirty
 [submodule "bundle/abolish"]
 	path = bundle/abolish
 	url = https://github.com/tpope/vim-abolish.git
-[submodule "bundle/unite"]
-	path = bundle/unite
-	url = https://github.com/Shougo/unite.vim.git
 [submodule "vim-colors-solarized"]
 	path = vim-colors-solarized
 	url = https://github.com/altercation/vim-colors-solarized.git
