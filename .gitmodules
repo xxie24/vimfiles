@@ -138,3 +138,6 @@ ignore = dirty
 	path = bundle/over
     url = https://github.com/osyo-manga/vim-over.git
     ignore = dirty
+[submodule "bundle/netrw"]
+	path = bundle/netrw
+	url = https://github.com/eiginn/netrw.git
