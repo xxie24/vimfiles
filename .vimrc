@@ -17,6 +17,8 @@ set fileformats=unix,mac,dos
 " call add(g:pathogen_disabled, 'abolish')
 let g:pathogen_disabled = []
 call add(g:pathogen_disabled, 'easymotion')
+call add(g:pathogen_disabled, 'vim-pandoc-after')
+"call add(g:pathogen_disabled, 'vim-pantondoc')
 
 "using pathogen to manage plugins... waaay easier than doing it manually
 "[http://www.vim.org/scripts/script.php?script_id=23321] these functions read
@@ -97,6 +99,7 @@ set whichwrap+=<,>,h,l,[,]
 " tabs (the old, spacy kind)
 " I want 'tabs' to be 4 spaces and the tab key inserts said spaces
 set tabstop=4
+set softtabstop=4
 set shiftwidth=4
 set expandtab
 
@@ -260,13 +263,13 @@ nmap <silent> <leader>sp :set spell!<CR>
 
 " -- MARKDOWN / PANDOC WORK {{{1
 
-" vim-pantondoc (https://github.com/vim-pandoc/vim-pandoc) 
+" vim-pantondoc (https://github.com/vim-pandoc/vim-pandoc)
 
 "Use Pandoc mode for Markdown files
 let g:pantondoc_use_pandoc_markdown = 1
 
 " just use Tab key for completion. Thank you Supertab [https://github.com/ervandew/supertab]
-let g:SuperTabDefaultCompletionType = "context"
+"let g:SuperTabDefaultCompletionType = "context"
 
 " }}}
 
@@ -286,7 +289,9 @@ nnoremap <leader>q :wq!<cr>
 
 "shortcuts to some common files'
 nnoremap <leader>ev :tabe $MYVIMRC<cr>
-nnoremap <leader>es :tabe ~/tmp/scratch.md<cr>
+nnoremap <leader>es :tabe ~/db/tmp/scratch.md<cr>
+nnoremap <leader>es2 :tabe ~/db/tmp/scratch2.md<cr>
+nnoremap <leader>es3 :tabe ~/db/tmp/scratch3.md<cr>
 nnoremap <leader>eb :tabe ~/.bashrc<cr>
 
 " :TOhtml configuration
@@ -384,6 +389,12 @@ map <silent> <leader>tws :ToggleSpaceHi<CR>
 
 " }}}
 
+"" -- LanguageTool {{{2
+" LanguageTool provides grammar checking
+
+let g:languagetool_jar='/Users/chris/db/appsupport/unix/languagetool/LanguageTool.jar'
+
+" }}}
 
 " -- FUNCTIONS {{{1
 
@@ -534,7 +545,27 @@ endfunction
 " }}}
 
 " -- TESTING, PENDING DELETION, UNCATEGORIZED {{{1
-let g:sneak#streak = 1
+
+nnoremap <space> zz
+nnoremap <CR> :nohlsearch<CR>
+
+set hls is " enable search highlighting while typing
+set ic scs inf wic " ignore case, except when uppercase is used
+
+let g:syntastic_html_checkers = ['tidy']
+let g:syntastic_html_tidy_ignore_errors = [ '<div> anchor "content" already defined' ]
+let g:syntastic_python_checkers = ['flake8']
+let g:syntastic_python_flake8_args = '--ignore="E501"'
+
+"let g:sneak#streak = 1
+
+"nmap f <Plug>Sneak_s
+"nmap F <Plug>Sneak_S
+"xmap f <Plug>Sneak_s
+"xmap F <Plug>Sneak_S
+"omap f <Plug>Sneak_s
+"omap F <Plug>Sneak_S
+
 nnoremap <esc> :noh<return><esc>
 
 " Manually change to directory of current file
@@ -574,23 +605,28 @@ let g:netrw_altv = 1
 " Default to tree mode
 let g:netrw_liststyle=3
 
-
+au BufEnter *.md let g:airline#extensions#whitespace#checks = [ 'indent' ]
+au BufLeave *.md let g:airline#extensions#whitespace#checks = [ 'indent', 'trailing']
 " }}}
 
 " -- OS X SPECIFIC {{{1
 
 if os == "mac"
-    "(pre)view current file in Brett Terpstra's awesome Marked markdown viewer see
+    "(pre)view current (markdown) file in Brett Terpstra's awesome Marked markdown viewer see
     "http://markedapp.com/
     nnoremap <leader>md :write<CR><bar>:silent !open -a Marked.app '%:p'<CR>
 
-    " View current Pandoc file in Safari (which is smart enough to reuse tabs)
+    " View current file as HTML in Safari (because it reuses tabs)
+    nnoremap <silent><leader>h :!open -a /Applications/Safari.app/Contents/MacOS/Safari '%:p'<CR>
+
+
+    " View current (markdown) file (rendered) in Safari (which is smart enough to reuse tabs)
     nnoremap <silent><leader>mv :silent !pandoc -f markdown -t html -s -o /tmp/%:r.html %:r.md && sleep .5 && open -a /Applications/Safari.app/Contents/MacOS/Safari /tmp/%:r.html<CR>
 
-    "Open current markdown document as PDF in Preview
+    "Open current (markdown) document as PDF in Preview
     nnoremap <silent><leader>mp :silent !pandoc -f markdown -o /tmp/%:r.pdf %:r.md && open -a /Applications/Adobe\ Acrobat\ X\ Pro/Adobe\ Acrobat\ Pro.app/ /tmp/%:r.pdf<CR>
 
-    "Open current markdown document as RTF in Word (blech)
+    "Open current (markdown) document as RTF in Word (blech)
     nnoremap <silent><leader>mr :silent !pandoc -f markdown -t rtf -s -o /tmp/%:r.rtf %:r.md \| open -a /Applications/Microsoft\ Office\ 2011/Microsoft\ Word.app/Contents/MacOS/Microsoft\ Word /tmp/%:r.rtf<CR>
 endif
 

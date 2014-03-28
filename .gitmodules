@@ -10,10 +10,6 @@
 	path = bundle/languagetool
 	url = https://github.com/vim-scripts/LanguageTool.git
 ignore = dirty
-[submodule "bundle/matchit"]
-	path = bundle/matchit
-	url = https://github.com/tsaleh/vim-matchit.git
-ignore = dirty
 [submodule "bundle/nerdcommenter"]
 	path = bundle/nerdcommenter
 	url = https://github.com/scrooloose/nerdcommenter.git
