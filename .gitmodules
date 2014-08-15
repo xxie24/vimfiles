@@ -122,9 +122,6 @@ ignore = dirty
 [submodule "bundle/vim-pandoc-syntax"]
 	path = bundle/vim-pandoc-syntax
 	url = https://github.com/vim-pandoc/vim-pandoc-syntax.git
-[submodule "bundle/vim-pantondoc"]
-	path = bundle/vim-pantondoc
-	url = https://github.com/vim-pandoc/vim-pantondoc.git
 [submodule "bundle/vim-pandoc-after"]
 	path = bundle/vim-pandoc-after
 	url = https://github.com/vim-pandoc/vim-pandoc-after
@@ -138,3 +135,21 @@ ignore = dirty
 [submodule "bundle/netrw"]
 	path = bundle/netrw
 	url = https://github.com/eiginn/netrw.git
+[submodule "bundle/zenroom"]
+	path = bundle/zenroom
+	url = https://github.com/amix/vim-zenroom.git
+[submodule "bundle/vimoutliner"]
+	path = bundle/vimoutliner
+	url = https://github.com/vimoutliner/vimoutliner.git
+[submodule "bundle/vim-dokuwiki"]
+	path = bundle/vim-dokuwiki
+	url = https://github.com/nblock/vim-dokuwiki.git
+[submodule "bundle/taskpaper"]
+	path = bundle/taskpaper
+	url = https://github.com/davidoc/taskpaper.vim.git
+[submodule "bundle/matchit"]
+	path = bundle/matchit
+	url = https://github.com/tmhedberg/matchit.git
+[submodule "bundle/vim-pandoc"]
+	path = bundle/vim-pandoc
+	url = https://github.com/vim-pandoc/vim-pandoc.git

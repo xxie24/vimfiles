@@ -17,8 +17,9 @@ set fileformats=unix,mac,dos
 " call add(g:pathogen_disabled, 'abolish')
 let g:pathogen_disabled = []
 call add(g:pathogen_disabled, 'easymotion')
-call add(g:pathogen_disabled, 'vim-pandoc-after')
+"call add(g:pathogen_disabled, 'vim-pandoc-after')
 "call add(g:pathogen_disabled, 'vim-pantondoc')
+call add(g:pathogen_disabled, 'snipmate')
 
 "using pathogen to manage plugins... waaay easier than doing it manually
 "[http://www.vim.org/scripts/script.php?script_id=23321] these functions read
@@ -114,7 +115,7 @@ set smarttab
 syntax enable
 
 " turn that cursor up to 11!
-":set cursorline
+set cursorline
 
 
 " -- EDITING {{{1
@@ -269,7 +270,7 @@ nmap <silent> <leader>sp :set spell!<CR>
 let g:pantondoc_use_pandoc_markdown = 1
 
 " just use Tab key for completion. Thank you Supertab [https://github.com/ervandew/supertab]
-"let g:SuperTabDefaultCompletionType = "context"
+let g:SuperTabDefaultCompletionType = "context"
 
 " }}}
 
@@ -566,7 +567,6 @@ let g:syntastic_python_flake8_args = '--ignore="E501"'
 "omap f <Plug>Sneak_s
 "omap F <Plug>Sneak_S
 
-nnoremap <esc> :noh<return><esc>
 
 " Manually change to directory of current file
 "nnoremap ,cd :cd %:p:h<CR>:pwd<CR>
